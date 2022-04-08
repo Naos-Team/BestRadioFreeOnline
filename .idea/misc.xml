@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/drawable/bg_item_about_round.xml" value="0.1995" />
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/drawable/border_image.xml" value="0.3405" />
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/drawable/border_image_radio_item.xml" value="0.1995" />
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/activity_forgotpass.xml" value="0.358695652173913" />
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/item_cityhome.xml" value="0.358695652173913" />
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/layout_citylist.xml" value="0.25" />
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/layout_cityradio_list.xml" value="0.358695652173913" />
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/layout_radiolist.xml" value="0.358695652173913" />
+        <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/layout_radiolist_grid.xml" value="0.358695652173913" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_forgotpass.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_main.xml" value="0.1" />

@@ -56,7 +56,11 @@ public class AdapterHomeCity extends RecyclerView.Adapter<AdapterHomeCity.MyView
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
-        holder.tv_title.setText(arraylist.get(position).getName());
+        String[] parts = arraylist.get(position).getName().split("-");
+
+        //holder.tv_title.setText(arraylist.get(position).getName());
+        holder.tv_country.setText(parts[1]);
+        holder.tv_title.setText(parts[0]);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -167,13 +171,13 @@ public class AdapterHomeCity extends RecyclerView.Adapter<AdapterHomeCity.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tv_title;
+        private TextView tv_title, tv_country;
         private CardView cardView;
         private ImageView imageView;
 
         private MyViewHolder(View view) {
             super(view);
-
+            tv_country = view.findViewById(R.id.tv_cityhome_text_city);
             tv_title = view.findViewById(R.id.tv_cityhome_text);
             cardView = view.findViewById(R.id.cv_cityhome);
             imageView = view.findViewById(R.id.image_city_item);
