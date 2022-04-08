@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/row_layout"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginBottom="7dp"
+    android:layout_marginEnd="7dp"
+    android:layout_marginRight="7dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/row_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/textView_radio_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/demo_item"
+            app:riv_corner_radius_top_left="2dp"
+            app:riv_corner_radius_top_right="2dp" />
+
+        <View
+            android:id="@+id/view_black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/textView_radio_name"
+            android:background="@drawable/bg_gradient_black" />
+
+        <ImageView
+            android:id="@+id/imageView_fav"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@mipmap/fav" />
+
+        <TextView
+            android:id="@+id/textView_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView_radio_name"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/imageView_eye"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_above="@+id/textView_radio_name"
+            android:layout_marginBottom="3dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_toLeftOf="@+id/textView_view"
+            android:layout_toStartOf="@+id/textView_view"
+            app:srcCompat="@drawable/eye" />
+
+        <TextView
+            android:id="@+id/textView_list_lang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView_radio_name"
+            android:layout_margin="5dp"
+            android:layout_toLeftOf="@+id/imageView_eye"
+            android:layout_toStartOf="@+id/imageView_eye"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView_radio_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

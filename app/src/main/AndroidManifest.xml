@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.alexnguyen.radiofreeonline"
+    android:installLocation="auto">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:name="com.alexnguyen.radiofreeonline.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:resizeableActivity="false"
+        android:theme="@style/AppTheme"
+        tools:targetApi="n"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:appComponentFactory" android:appComponentFactory="@string/app_name">
+
+        <activity android:name="com.alexnguyen.radiofreeonline.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.alexnguyen.radiofreeonline.BaseActivity"
+            android:windowSoftInputMode="adjustNothing"/>
+
+        <activity android:name="com.alexnguyen.radiofreeonline.AboutActivity"/>
+        <activity android:name="com.alexnguyen.radiofreeonline.SettingActivity"/>
+        <activity android:name="com.alexnguyen.radiofreeonline.LoginActivity"/>
+        <activity android:name="com.alexnguyen.radiofreeonline.RegisterActivity"/>
+        <activity android:name="com.alexnguyen.radiofreeonline.ForgotPasswordActivity"/>
+        <activity android:name="com.alexnguyen.radiofreeonline.ProfileActivity"/>
+        <activity android:name="com.alexnguyen.radiofreeonline.ProfileEditActivity"/>
+        <activity android:name="com.alexnguyen.radiofreeonline.ThemeActivity"/>
+
+        <service android:name="com.alexnguyen.radiofreeonline.PlayService"
+            android:exported="false"/>
+
+        <service
+            android:name="com.alexnguyen.utils.NotificationExtenderExample"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+            <intent-filter>
+                <action android:name="com.onesignal.NotificationExtender" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id"/>
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/description"/>
+
+        <receiver
+            android:name="com.alexnguyen.utils.SleepTimeReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver android:name="com.alexnguyen.utils.MediaButtonIntentReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

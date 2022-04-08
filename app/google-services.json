@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "709528367169",
+    "firebase_url": "https://radiofreeonline-5804a.firebaseio.com",
+    "project_id": "radiofreeonline-5804a",
+    "storage_bucket": "radiofreeonline-5804a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709528367169:android:b89e07836233aad00156c0",
+        "android_client_info": {
+          "package_name": "com.alexnguyen.radiofreeonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709528367169-s9jtvbn27uurfduc157k4mi58do06qjl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alexnguyen.radiofreeonline",
+            "certificate_hash": "7b6e604372ebfee4ee97f179b7511f36ddf358ed"
+          }
+        },
+        {
+          "client_id": "709528367169-6i65m4chk7rhdcauumfniem3nm45k1oe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJBtzjmdYywYX5SHbak9-YuaSzHPMQSss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709528367169-6i65m4chk7rhdcauumfniem3nm45k1oe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
