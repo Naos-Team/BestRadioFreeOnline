@@ -67,6 +67,7 @@
             <include
                 android:id="@+id/layout_musicplayer"
                 layout="@layout/layout_musicscreen"
+                android:layout_marginTop="70dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
 

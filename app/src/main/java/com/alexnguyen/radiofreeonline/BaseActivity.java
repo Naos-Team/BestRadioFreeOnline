@@ -107,21 +107,21 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     StatusBarView statusBarView;
     FragmentManager fm;
     NavigationView navigationView;
-    SlidingUpPanelLayout slidingPanel;
+    SlidingUpPanelLayout slidingPanel, slidingPanel_control;
     BottomSheetDialog dialog_desc;
     DBHelper dbHelper;
     AdConsent adConsent;
     ProgressDialog progressDialog;
     CircularProgressBar circularProgressBar, circularProgressBar_collapse;
     SeekBar seekbar_song;
-    LinearLayout ll_ad, ll_collapse_color, ll_player_expand, ll_play_collapse;
+    LinearLayout ll_ad, ll_collapse_color, ll_player_expand, ll_play_collapse, ll_top_collapse;
     RelativeLayout rl_expand, rl_collapse, rl_song_seekbar;
     CircularImageView imageView_player;
     RoundedImageView imageView_radio;
     public ImageView imageView_sleep;
-    ImageView imageView_report, imageView_play, imageView_share, imageView_next, imageView_previous, imageView_next_expand, imageView_previous_expand, imageView_fav, imageView_collapse, imageView_desc, imageView_volume;
+    ImageView imageView_report, imageView_play, imageView_share, imageView_next, imageView_previous, imageView_next_expand, imageView_previous_expand, imageView_fav, imageView_desc, imageView_volume;
     FloatingActionButton fab_play_expand;
-    TextView textView_name, textView_song, textView_freq_expand, textView_radio_expand, textView_radio_expand2, textView_song_expand, textView_song_duration, textView_total_duration;
+    TextView textView_name, textView_song, textView_freq_expand, textView_radio_expand, textView_song_expand, textView_song_duration, textView_total_duration;
     Methods methods, methodsBack;
     LoadAbout loadAbout;
     DrawerLayout drawer;
@@ -178,6 +178,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         slidingPanel = findViewById(R.id.sliding_layout);
+        //slidingPanel_control = findViewById(R.id.sliding_layout_control);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Menu menu = navigationView.getMenu();
@@ -202,13 +203,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         imageView_volume = findViewById(R.id.imageView_volume);
         textView_name = findViewById(R.id.textView_player_name);
         textView_song = findViewById(R.id.textView_song_name);
-        imageView_collapse = findViewById(R.id.imageView_collapse);
         imageView_report = findViewById(R.id.imageView_report_expand);
 
         fab_play_expand = findViewById(R.id.fab_play);
         imageView_radio = findViewById(R.id.imageView_radio);
         textView_radio_expand = findViewById(R.id.textView_radio_name_expand);
-        textView_radio_expand2 = findViewById(R.id.textView_radio_expand);
         textView_freq_expand = findViewById(R.id.textView_freq_expand);
         textView_song_expand = findViewById(R.id.textView_song_expand);
         textView_song_duration = findViewById(R.id.textView_song_duration);
@@ -216,6 +215,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         ll_player_expand = findViewById(R.id.ll_player_expand);
         ll_play_collapse = findViewById(R.id.ll_play_collapse);
+        ll_top_collapse = findViewById(R.id.ll_top_collapse);
         rl_song_seekbar = findViewById(R.id.rl_song_seekbar);
         rl_collapse = findViewById(R.id.ll_collapse);
         ll_collapse_color = findViewById(R.id.ll_collapse_color);
@@ -275,6 +275,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        ll_top_collapse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            }
+        });
+
         slidingPanel.setDragView(rl_collapse);
         slidingPanel.setShadowHeight(0);
         slidingPanel.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
@@ -308,6 +315,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+
 
         imageView_play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -387,12 +395,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_collapse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-            }
-        });
 
         imageView_desc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -595,7 +597,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     public void changeText(ItemRadio itemRadio) {
         if (Constants.playTypeRadio) {
             textView_freq_expand.setText(itemRadio.getRadioFreq() + " " + getString(R.string.HZ));
-            textView_radio_expand2.setText(getString(R.string.radio));
             changeSongName(Constants.song_name);
             changeFav(itemRadio);
 
@@ -611,7 +612,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         } else {
             textView_total_duration.setText(itemRadio.getDuration());
-            textView_radio_expand2.setText(getString(R.string.on_demand));
             textView_song.setText(getString(R.string.on_demand));
             textView_song_expand.setText(itemRadio.getRadioName());
 

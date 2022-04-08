@@ -3,11 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/drawable_round_musicscreen.xml" value="0.1895" />
+        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/shape_collapse_btn.xml" value="0.124" />
+        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_about.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_base.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_forgotpass.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_musicscreen.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_theme.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_volume.xml" value="0.25416666666666665" />
       </map>
