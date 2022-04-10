@@ -14,10 +14,12 @@ import com.alexnguyen.adapter.AdapterHomeCity;
 import com.alexnguyen.adapter.AdapterHomeLanguage;
 import com.alexnguyen.asyncTasks.LoadCity;
 import com.alexnguyen.asyncTasks.LoadLanguage;
+import com.alexnguyen.asyncTasks.LoadOnDemandCat;
 import com.alexnguyen.interfaces.AdConsentListener;
 import com.alexnguyen.interfaces.CityClickListener;
 import com.alexnguyen.interfaces.CityListener;
 import com.alexnguyen.interfaces.LanguageListener;
+import com.alexnguyen.interfaces.OnDemandCatListener;
 import com.alexnguyen.item.ItemCity;
 import com.alexnguyen.item.ItemLanguage;
 import com.alexnguyen.utils.AdConsent;
@@ -349,6 +351,9 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
 //                            adapterRadioList_featured = new AdapterRadioList(getActivity(), arrayList_radio_featured, "linear");
 //                            recyclerView_featured.setAdapter(adapterRadioList_featured);
                             adConsent.checkForConsent();
+
+                            ((BaseActivity) getContext()).LoadDemandList(arrayList_ondemandcat);
+
                             loadCity();
                             loadAllRadio();
                             loadLanguage();

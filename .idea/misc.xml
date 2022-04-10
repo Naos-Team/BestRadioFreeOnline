@@ -3,6 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/drawable/drawable_round_musicscreen.xml" value="0.2355" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/drawable/shape_bg_control.xml" value="0.196" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/drawable/shape_button_control.xml" value="0.2355" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/activity_about.xml" value="0.2833333333333333" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/activity_base.xml" value="0.36666666666666664" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/activity_city_detail.xml" value="0.2833333333333333" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/fragment_cat.xml" value="0.24583333333333332" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/fragment_home.xml" value="0.24583333333333332" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/item_cityhome.xml" value="0.24583333333333332" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/item_demand_control.xml" value="0.2833333333333333" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_cityradio_list.xml" value="0.24583333333333332" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_musicsceen_control.xml" value="0.36666666666666664" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_musicsceen_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_musicscreen.xml" value="0.36666666666666664" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_ondemandcat.xml" value="0.2833333333333333" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_radiolist_grid.xml" value="0.24583333333333332" />
         <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/drawable/bg_item_about_round.xml" value="0.1995" />
         <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/drawable/border_image.xml" value="0.3405" />
         <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/drawable/border_image_radio_item.xml" value="0.1995" />
