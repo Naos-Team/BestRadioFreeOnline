@@ -1,6 +1,8 @@
 package com.alexnguyen.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,24 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.alexnguyen.adapter.AdapterHomeCity;
 import com.alexnguyen.adapter.AdapterHomeLanguage;
+import com.alexnguyen.adapter.AdapterSlideOnDemand;
 import com.alexnguyen.asyncTasks.LoadCity;
 import com.alexnguyen.asyncTasks.LoadLanguage;
 import com.alexnguyen.asyncTasks.LoadOnDemandCat;
 import com.alexnguyen.interfaces.AdConsentListener;
 import com.alexnguyen.interfaces.CityClickListener;
 import com.alexnguyen.interfaces.CityListener;
+import com.alexnguyen.interfaces.InterAdListener;
 import com.alexnguyen.interfaces.LanguageListener;
 import com.alexnguyen.interfaces.OnDemandCatListener;
 import com.alexnguyen.item.ItemCity;
 import com.alexnguyen.item.ItemLanguage;
 import com.alexnguyen.utils.AdConsent;
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.alexnguyen.adapter.AdapterRadioList;
 import com.alexnguyen.asyncTasks.LoadHome;
 import com.alexnguyen.asyncTasks.LoadRadioList;
@@ -50,6 +53,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
+import androidx.viewpager2.widget.ViewPager2;
+
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 
 public class FragmentHome extends Fragment implements BaseSliderView.OnSliderClickListener {
@@ -62,8 +69,10 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
     private ArrayList<ItemLanguage> arrayList_radio_language;
     private ArrayList<ItemOnDemandCat> arrayList_ondemandcat;
     public static AdapterRadioList adapterRadioList, adapterRadioList_mostview, adapterRadioList_featured, adapterRadioList_all;
+    public  AdapterSlideOnDemand adapterSlideOnDemand;
     private CircularProgressBar progressBar;
     private NestedScrollView scrollView;
+    private ViewPager2 viewpager_slide;
     private RecyclerView recyclerView, recyclerView_mostview, recyclerView_featured, recyclerView_city, recyclerView_language, recyclerView_all_radio;
     private LinearLayout ll_ad;
     private Boolean isLoaded = false, isVisible = false;
@@ -204,7 +213,8 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
         progressBar = rootView.findViewById(R.id.progressBar_home);
         scrollView = rootView.findViewById(R.id.scrollView_home);
 
-        sliderLayout = rootView.findViewById(R.id.sliderLayout);
+        //sliderLayout = rootView.findViewById(R.id.sliderLayout);
+        viewpager_slide = rootView.findViewById(R.id.viewpager_slide);
 
         recyclerView = rootView.findViewById(R.id.recyclerView_radiolist);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL, false);
@@ -503,40 +513,101 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
     };
 
     private void loadSlider() {
-        for (int i = 0; i < arrayList_ondemandcat.size(); i++) {
-            TextSliderView textSliderView = new TextSliderView(getActivity());
-            textSliderView.frequency("(" + arrayList_ondemandcat.get(i).getTotalItems() + ")")
-                    .language("")
-                    .name(arrayList_ondemandcat.get(i).getName())
-                    .image(arrayList_ondemandcat.get(i).getImage())
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(this);
+        InterAdListener interAdListener = new InterAdListener() {
+            @Override
+            public void onClick(int position, String type) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentOnDemandDetails f1 = new FragmentOnDemandDetails();
+                FragmentTransaction ft = fm.beginTransaction();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("item", arrayList_ondemandcat.get(position));
+                f1.setArguments(bundle);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ft.add(R.id.content_frame_activity, f1, arrayList_ondemandcat.get(position).getName());
+                ft.addToBackStack(arrayList_ondemandcat.get(position).getName());
+                ft.commit();
+                ((BaseActivity) getActivity()).getSupportActionBar().setTitle(arrayList_ondemandcat.get(position).getName());
+            }
+        };
 
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle().putInt("pos", i);
+        Methods methods = new Methods(getActivity(), interAdListener);
 
-            sliderLayout.addSlider(textSliderView);
-        }
-        sliderLayout.setPresetTransformer(SliderLayout.Transformer.Default);
-        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
-        sliderLayout.setCustomAnimation(new DescriptionAnimation());
-        sliderLayout.setDuration(5000);
+
+        //       for (int i = 0; i < arrayList_ondemandcat.size(); i++) {
+//            TextSliderView textSliderView = new TextSliderView(getActivity());
+//            textSliderView.frequency("(" + arrayList_ondemandcat.get(i).getTotalItems() + ")")
+//                    .language("")
+//                    .name(arrayList_ondemandcat.get(i).getName())
+//                    .image(arrayList_ondemandcat.get(i).getImage())
+//                    .setScaleType(BaseSliderView.ScaleType.Fit)
+//                    .setOnSliderClickListener(this);
+//
+//            textSliderView.bundle(new Bundle());
+//            textSliderView.getBundle().putInt("pos", i);
+//
+//            sliderLayout.addSlider(textSliderView);
+//        }
+//        sliderLayout.setPresetTransformer(SliderLayout.Transformer.Default);
+//        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
+//        sliderLayout.setCustomAnimation(new DescriptionAnimation());
+//        sliderLayout.setDuration(5000);
+
+        Handler handler = new Handler(Looper.getMainLooper());
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                int currentPosition = viewpager_slide.getCurrentItem();
+                if(currentPosition == arrayList_ondemandcat.size() - 1){
+                    viewpager_slide.setCurrentItem(0);
+                } else {
+                    viewpager_slide.setCurrentItem(currentPosition + 1);
+                }
+            }
+        };
+    //setting ViewPager 2
+        viewpager_slide.setOffscreenPageLimit(3);//3 item
+        viewpager_slide.setClipToPadding(false);
+        viewpager_slide.setClipChildren(false);
+
+        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+        compositePageTransformer.addTransformer(new MarginPageTransformer(10));
+        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
+            @Override
+            public void transformPage(@NonNull View page, float position) {
+                float r = 1 - Math.abs(position);
+                page.setScaleY(0.85f + r*0.15f);
+            }
+        });
+        viewpager_slide.setPageTransformer(compositePageTransformer);
+        adapterSlideOnDemand = new AdapterSlideOnDemand(arrayList_ondemandcat, methods);
+        AdapterSlideOnDemand.setSelected_index(0);
+        viewpager_slide.setAdapter(adapterSlideOnDemand);
+        viewpager_slide.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                AdapterSlideOnDemand.setSelected_index(position);
+                handler.removeCallbacks(runnable);
+                handler.postDelayed(runnable, 2500);
+                adapterSlideOnDemand.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-        FragmentManager fm = FragmentHome.this.getParentFragment().getFragmentManager();
-        FragmentOnDemandDetails f1 = new FragmentOnDemandDetails();
-        FragmentTransaction ft = fm.beginTransaction();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("item", arrayList_ondemandcat.get(slider.getBundle().getInt("pos")));
-        f1.setArguments(bundle);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.hide(FragmentHome.this.getParentFragment());
-        ft.add(R.id.content_frame_activity, f1, arrayList_ondemandcat.get(slider.getBundle().getInt("pos")).getName());
-        ft.addToBackStack(arrayList_ondemandcat.get(slider.getBundle().getInt("pos")).getName());
-        ft.commit();
-        ((BaseActivity) getActivity()).getSupportActionBar().setTitle(arrayList_ondemandcat.get(slider.getBundle().getInt("pos")).getName());
+//        FragmentManager fm = FragmentHome.this.getParentFragment().getFragmentManager();
+//        FragmentOnDemandDetails f1 = new FragmentOnDemandDetails();
+//        FragmentTransaction ft = fm.beginTransaction();
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("item", arrayList_ondemandcat.get(slider.getBundle().getInt("pos")));
+//        f1.setArguments(bundle);
+//        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//        ft.hide(FragmentHome.this.getParentFragment());
+//        ft.add(R.id.content_frame_activity, f1, arrayList_ondemandcat.get(slider.getBundle().getInt("pos")).getName());
+//        ft.addToBackStack(arrayList_ondemandcat.get(slider.getBundle().getInt("pos")).getName());
+//        ft.commit();
+//        ((BaseActivity) getActivity()).getSupportActionBar().setTitle(arrayList_ondemandcat.get(slider.getBundle().getInt("pos")).getName());
     }
 
 //    @Override
