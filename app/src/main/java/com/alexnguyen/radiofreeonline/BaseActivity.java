@@ -1,5 +1,8 @@
 package com.alexnguyen.radiofreeonline;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -24,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.LinearInterpolator;
 import android.webkit.WebView;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -39,6 +43,7 @@ import com.alexnguyen.fragments.FragmentExitDialog;
 import com.alexnguyen.interfaces.BackInterAdListener;
 import com.alexnguyen.interfaces.CityClickListener;
 import com.alexnguyen.item.ItemOnDemandCat;
+import com.alexnguyen.utils.RecyclerItemClickListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -78,6 +83,7 @@ import com.warkiz.widget.IndicatorSeekBar;
 import com.warkiz.widget.OnSeekChangeListener;
 import com.warkiz.widget.SeekParams;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -89,6 +95,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
@@ -98,6 +105,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Scene;
+import androidx.transition.TransitionManager;
 
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
@@ -117,11 +126,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     SeekBar seekbar_song;
     LinearLayout ll_ad, ll_collapse_color, ll_player_expand, ll_play_collapse, ll_top_collapse;
     RelativeLayout rl_expand, rl_collapse, rl_song_seekbar, btn_previous_expand, btn_sleep, btn_next_expand, btn_volume;
-    CircularImageView imageView_player;
+    ImageView imageView_player;
     RoundedImageView imageView_radio;
-    ImageView imageView_play, imageView_share, imageView_next, imageView_previous, imageView_fav;
-    FloatingActionButton fab_play_expand;
-    TextView textView_name, textView_song, textView_freq_expand, textView_radio_expand, textView_song_expand, textView_song_duration, textView_total_duration;
+    ImageView imageView_play, imageView_share, imageView_fav;
+//    FloatingActionButton fab_play_expand;
+    TextView textView_name, textView_song, textView_freq_expand, textView_radio_expand, textView_song_expand, textView_song_duration, textView_total_duration, tv_views;
     Methods methods, methodsBack;
     LoadAbout loadAbout;
     DrawerLayout drawer;
@@ -134,6 +143,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     MenuItem menu_login, menu_profile;
     BottomSheetDialog dialog_report;
     RecyclerView rv_suggestion;
+    RelativeLayout btn_play_music, btn_previous_scene2, btn_next_scene2, btn_play_scene2;
+    ImageView iv_play_music, iv_thumb_scene2, iv_play_scene2;
+    CardView btn_report;
+    LinearLayout control_dragview, ll_suggest, ll_player_scene2;
+    TextView tv_songname_scene2;
+
+
 
     double current_offset = 0;
 
@@ -190,6 +206,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         changeLoginName();
 
+        control_dragview = findViewById(R.id.slp_control_dragview);
+        tv_views = findViewById(R.id.tv_views);
+        btn_report = findViewById(R.id.btn_report);
         rv_suggestion = findViewById(R.id.rv_suggestion);
         circularProgressBar = findViewById(R.id.loader);
         circularProgressBar_collapse = findViewById(R.id.loader_collapse);
@@ -198,18 +217,30 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         imageView_share = findViewById(R.id.imageView_share);
         imageView_fav = findViewById(R.id.imageView_fav_expand);
         imageView_player = findViewById(R.id.imageView_player);
-        imageView_previous = findViewById(R.id.imageView_player_previous);
+//        imageView_previous = findViewById(R.id.imageView_player_previous);
         btn_previous_expand = findViewById(R.id.btn_previous_expand);
-        imageView_next = findViewById(R.id.imageView_player_next);
+//        imageView_next = findViewById(R.id.imageView_player_next);
         btn_next_expand = findViewById(R.id.btn_next_expand);
         imageView_play = findViewById(R.id.imageView_player_play);
         //imageView_desc = findViewById(R.id.imageView_desc_expand);
         btn_volume = findViewById(R.id.btn_volume);
         textView_name = findViewById(R.id.textView_player_name);
         textView_song = findViewById(R.id.textView_song_name);
+        ll_suggest = findViewById(R.id.ll_suggest);
+        ll_player_scene2 = findViewById(R.id.ll_player_scene2);
         //imageView_report = findViewById(R.id.imageView_report_expand);
 
-        fab_play_expand = findViewById(R.id.fab_play);
+        iv_play_scene2 = findViewById(R.id.iv_play_scene2);
+        iv_thumb_scene2 = findViewById(R.id.iv_thumb_scene2);
+        btn_play_scene2 = findViewById(R.id.btn_play_scene2);
+        btn_previous_scene2 = findViewById(R.id.btn_previous_scene2);
+        btn_next_scene2 = findViewById(R.id.btn_next_scene2);
+        tv_songname_scene2 = findViewById(R.id.tv_songname_scene2);
+
+
+        iv_play_music = findViewById(R.id.iv_play_music);
+        btn_play_music = findViewById(R.id.btn_play_music);
+//        fab_play_expand = findViewById(R.id.fab_play);
         imageView_radio = findViewById(R.id.imageView_radio);
         textView_radio_expand = findViewById(R.id.textView_radio_name_expand);
         textView_freq_expand = findViewById(R.id.textView_freq_expand);
@@ -265,6 +296,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        btn_play_music.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         rl_collapse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -285,6 +323,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
             }
         });
+
+        sliding_layout_main.setDragView(control_dragview);
 
         slidingPanel.setDragView(rl_collapse);
         slidingPanel.setShadowHeight(0);
@@ -333,8 +373,61 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
                 if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
                     Log.e("AAA", "expand");
+
+                    ObjectAnimator suggestDown = ObjectAnimator.ofFloat(ll_suggest, "translationY", 220f);
+                    suggestDown.setDuration(300);
+                    suggestDown.start();
+
+
+                    ll_player_expand.animate()
+                            .alpha(0f)
+                            .setDuration(100)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    ll_player_expand.setVisibility(View.GONE);
+                                }
+                            });
+
+
+                    ll_player_scene2.animate()
+                            .alpha(1f)
+                            .setDuration(200)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+                                    ll_player_scene2.setVisibility(View.VISIBLE);
+                                }
+                            });
+
+
                 }else{
                     Log.e("AAA", "collapse");
+
+                    ObjectAnimator suggestUp = ObjectAnimator.ofFloat(ll_suggest, "translationY", 0f);
+                    suggestUp.setDuration(300);
+                    suggestUp.start();
+
+
+                    ll_player_expand.animate()
+                            .alpha(1f)
+                            .setDuration(200)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+                                    ll_player_expand.setVisibility(View.VISIBLE);
+                                }
+                            });
+
+                    ll_player_scene2.animate()
+                            .alpha(0f)
+                            .setDuration(100)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    ll_player_scene2.setVisibility(View.GONE);
+                                }
+                            });
                 }
             }
         });
@@ -348,9 +441,17 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        fab_play_expand.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(BaseActivity.this, R.color.colorPrimary)));
+//        fab_play_expand.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(BaseActivity.this, R.color.colorPrimary)));
+//
+//        fab_play_expand.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                methods.showRateDialog();
+//                clickPlay(Constants.pos, Constants.playTypeRadio);
+//            }
+//        });
 
-        fab_play_expand.setOnClickListener(new View.OnClickListener() {
+        btn_play_music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 methods.showRateDialog();
@@ -358,13 +459,21 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_next.setOnClickListener(new View.OnClickListener() {
+        btn_play_scene2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 methods.showRateDialog();
-                togglePlayPosition(true);
+                clickPlay(Constants.pos, Constants.playTypeRadio);
             }
         });
+
+//        imageView_next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                methods.showRateDialog();
+//                togglePlayPosition(true);
+//            }
+//        });
 
         btn_next_expand.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -374,7 +483,23 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_previous.setOnClickListener(new View.OnClickListener() {
+        btn_next_scene2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                methods.showRateDialog();
+                togglePlayPosition(true);
+            }
+        });
+
+//        imageView_previous.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                methods.showRateDialog();
+//                togglePlayPosition(false);
+//            }
+//        });
+
+        btn_previous_expand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 methods.showRateDialog();
@@ -382,9 +507,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        btn_previous_expand.setOnClickListener(new View.OnClickListener() {
+        btn_previous_scene2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 methods.showRateDialog();
                 togglePlayPosition(false);
             }
@@ -447,14 +572,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-//        imageView_report.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (Constants.arrayList_radio.size() > 0) {
-//                    showReportDialog();
-//                }
-//            }
-//        });
+        btn_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Constants.arrayList_radio.size() > 0) {
+                    showReportDialog();
+                }
+            }
+        });
 
         if (!Constants.pushRID.equals("0")) {
             progressDialog.show();
@@ -469,6 +594,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         loadFrag(f1, getResources().getString(R.string.home), fm);
         getSupportActionBar().setTitle(getString(R.string.home));
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -594,6 +720,23 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    private void startImageAnimation(){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                imageView_radio.animate().rotationBy(360).withEndAction(this).setDuration(10000)
+                        .setInterpolator(new LinearInterpolator()).start();
+            }
+        };
+
+        imageView_radio.animate().rotationBy(360).withEndAction(runnable).setDuration(10000)
+                .setInterpolator(new LinearInterpolator()).start();
+    }
+
+    private void stopImageAnimation(){
+        imageView_radio.animate().cancel();
+    }
+
 
     public void LoadDemandList(ArrayList<ItemOnDemandCat> arrayList_demand){
 
@@ -613,10 +756,54 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
 
         AdapterSuggest adapterSuggest = new AdapterSuggest(arrayList_random);
+        InterAdListener interAdListener = new InterAdListener() {
+            @Override
+            public void onClick(int position, String type) {
+                int pos = getPosition(adapterSuggest.getID(position), arrayList_random);
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentOnDemandDetails f1 = new FragmentOnDemandDetails();
+                FragmentTransaction ft = fm.beginTransaction();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("item", arrayList_random.get(pos));
+                f1.setArguments(bundle);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                //ft.hide(fm.findFragmentByTag(getString(R.string.on_demand)));
+                ft.add(R.id.content_frame_activity, f1, arrayList_random.get(pos).getName());
+                ft.addToBackStack(arrayList_random.get(pos).getName());
+                ft.commit();
+                getSupportActionBar().setTitle(arrayList_random.get(pos).getName());
+
+                slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                sliding_layout_main.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            }
+        };
+
+        Methods suggest_method = new Methods(this, interAdListener);
 
         rv_suggestion.setLayoutManager(new GridLayoutManager(this, 3));
         rv_suggestion.setAdapter(adapterSuggest);
+
+        rv_suggestion.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                suggest_method.showInter(position, "");
+            }
+        }));
+
+
     }
+
+    private int getPosition(String id, ArrayList<ItemOnDemandCat> arrayList_demand) {
+        int count = 0;
+        for (int i = 0; i < arrayList_demand.size(); i++) {
+            if (id.equals(arrayList_demand.get(i).getId())) {
+                count = i;
+                break;
+            }
+        }
+        return count;
+    }
+
 
     private void popUpSlidingPanel(){
         slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
@@ -629,15 +816,25 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             ItemRadio itemRadio = PlayService.getInstance().getPlayingRadioStation();
             if (itemRadio != null) {
                 changeText(itemRadio);
-                imageView_play.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.pause_white));
-                fab_play_expand.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.fab_pause));
+                imageView_play.setImageDrawable(getResources().getDrawable(R.drawable.pause_2));
+//                fab_play_expand.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.fab_pause));
+
+                iv_play_music.setImageDrawable(getResources().getDrawable(R.drawable.pause_2));
+                iv_play_scene2.setImageDrawable(getResources().getDrawable(R.drawable.pause_2));
+
+                startImageAnimation();
             }
         } else {
             if (Constants.arrayList_radio.size() > 0) {
                 changeText(Constants.arrayList_radio.get(Constants.pos));
             }
-            imageView_play.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.play_white));
-            fab_play_expand.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.fab_play));
+            imageView_play.setImageDrawable(getResources().getDrawable(R.drawable.play_2));
+//            fab_play_expand.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.fab_play));
+
+            iv_play_music.setImageDrawable(getResources().getDrawable(R.drawable.play_2));
+            iv_play_scene2.setImageDrawable(getResources().getDrawable(R.drawable.play_2));
+
+            stopImageAnimation();
         }
     }
 
@@ -662,13 +859,16 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             textView_song.setText(getString(R.string.on_demand));
             textView_song_expand.setText(itemRadio.getRadioName());
 
-            textView_freq_expand.setVisibility(View.GONE);
+            textView_freq_expand.setText(getString(R.string.on_demand));;
             textView_song_expand.setVisibility(View.GONE);
             imageView_fav.setVisibility(View.GONE);
             rl_song_seekbar.setVisibility(View.VISIBLE);
         }
+        tv_songname_scene2.setText(itemRadio.getRadioName());
         textView_name.setText(itemRadio.getRadioName());
         textView_radio_expand.setText(itemRadio.getRadioName());
+        tv_views.setText(itemRadio.getViews());
+
 
         Picasso.get().load(itemRadio.getRadioImageurl())
                 .placeholder(R.drawable.placeholder)
@@ -676,6 +876,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         Picasso.get().load(methods.getImageThumbSize(itemRadio.getRadioImageurl(), getString(R.string.home)))
                 .placeholder(R.drawable.placeholder)
                 .into(imageView_player);
+        Picasso.get().load(methods.getImageThumbSize(itemRadio.getRadioImageurl(), getString(R.string.home)))
+                .placeholder(R.drawable.placeholder)
+                .into(iv_thumb_scene2);
     }
 
     public void changeFav(ItemRadio itemRadio) {
@@ -920,18 +1123,18 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         Constants.isThemeChanged = false;
         statusBarView.setBackground(methods.getGradientDrawableToolbar());
         toolbar.setBackground(methods.getGradientDrawableToolbar());
-        fab_play_expand.setBackgroundTintList(ColorStateList.valueOf(sharedPref.getFirstColor()));
-        ll_collapse_color.setBackground(methods.getGradientDrawableToolbar());
+//        fab_play_expand.setBackgroundTintList(ColorStateList.valueOf(sharedPref.getFirstColor()));
+//        ll_collapse_color.setBackground(methods.getGradientDrawableToolbar());
         navigationView.setBackground(methods.getGradientDrawableToolbar());
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            seekbar_song.setThumbTintList(ColorStateList.valueOf(sharedPref.getFirstColor()));
-            seekbar_song.setProgressTintList(ColorStateList.valueOf(sharedPref.getFirstColor()));
-            seekbar_song.setSecondaryProgressTintList(ColorStateList.valueOf(sharedPref.getSecondColor()));
-        } else {
-            seekbar_song.getThumb().setColorFilter(sharedPref.getFirstColor(), PorterDuff.Mode.SRC_IN);
-            seekbar_song.getProgressDrawable().setColorFilter(sharedPref.getSecondColor(), PorterDuff.Mode.SRC_IN);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            seekbar_song.setThumbTintList(ColorStateList.valueOf(sharedPref.getFirstColor()));
+//            seekbar_song.setProgressTintList(ColorStateList.valueOf(sharedPref.getFirstColor()));
+//            seekbar_song.setSecondaryProgressTintList(ColorStateList.valueOf(sharedPref.getSecondColor()));
+//        } else {
+//            seekbar_song.getThumb().setColorFilter(sharedPref.getFirstColor(), PorterDuff.Mode.SRC_IN);
+//            seekbar_song.getProgressDrawable().setColorFilter(sharedPref.getSecondColor(), PorterDuff.Mode.SRC_IN);
+//        }
 
         int[][] state = new int[][]{
                 new int[]{android.R.attr.state_checked},
@@ -1140,6 +1343,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alert = alt_bld.create();
         alert.show();
     }
+
+
 
     private void openTimeDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this, R.style.AlertDialogTheme);

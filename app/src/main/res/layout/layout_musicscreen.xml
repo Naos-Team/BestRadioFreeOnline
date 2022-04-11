@@ -22,7 +22,7 @@
             app:umanoFadeColor="@android:color/transparent"
             app:umanoShadowHeight="0dp"
             sothree:umanoOverlay="true"
-            sothree:umanoPanelHeight="200dp">
+            sothree:umanoPanelHeight="230dp">
 
             <include
                 android:id="@+id/ll_musicsceen_main"
@@ -31,7 +31,7 @@
                 android:layout_height="match_parent" />
 
             <include
-                android:id="@+id/ll_musicsceen_control"
+                android:id="@+id/ll_musicsceen_main"
                 layout="@layout/layout_musicsceen_control"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -52,18 +52,27 @@
         <LinearLayout
             android:id="@+id/ll_collapse_color"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
+            android:layout_marginHorizontal="0dp"
             android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/shape_player_collapse"
             android:orientation="horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imageView_player"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                app:riv_corner_radius="90dp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="65dp"
-                android:layout_marginStart="65dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -71,20 +80,21 @@
                     android:id="@+id/textView_player_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@string/no_fm"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView_song_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:ellipsize="marquee"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
@@ -100,7 +110,8 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp">
 
@@ -108,30 +119,32 @@
                     android:id="@+id/ll_play_collapse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/shape_btn_play_collapse"
+                    android:padding="12dp">
 
-                    <ImageView
-                        android:id="@+id/imageView_player_previous"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@mipmap/previous_white"
-                        android:contentDescription="@string/image"/>
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/imageView_player_previous"-->
+                    <!--                        android:layout_width="35dp"-->
+                    <!--                        android:layout_height="35dp"-->
+                    <!--                        android:src="@mipmap/previous_white"-->
+                    <!--                        android:contentDescription="@string/image"/>-->
 
                     <ImageView
                         android:id="@+id/imageView_player_play"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:src="@mipmap/play_white"
-                        android:contentDescription="@string/image" />
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/image"
+                        android:src="@drawable/play_2" />
 
-                    <ImageView
-                        android:id="@+id/imageView_player_next"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@mipmap/next"
-                        android:contentDescription="@string/image" />
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/imageView_player_next"-->
+                    <!--                        android:layout_width="35dp"-->
+                    <!--                        android:layout_height="35dp"-->
+                    <!--                        android:src="@mipmap/next"-->
+                    <!--                        android:contentDescription="@string/image" />-->
 
                 </LinearLayout>
 
@@ -152,19 +165,6 @@
             </RelativeLayout>
 
         </LinearLayout>
-
-        <com.pkmmte.view.CircularImageView
-            android:id="@+id/imageView_player"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop"
-            app:border="true"
-            app:border_color="#EEEEEE"
-            app:border_width="1dp"
-            app:shadow="true" />
 
     </RelativeLayout>
 

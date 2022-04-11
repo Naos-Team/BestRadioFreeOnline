@@ -45,6 +45,10 @@ public class AdapterSuggest extends RecyclerView.Adapter<AdapterSuggest.MyViewHo
 
     }
 
+    public String getID(int pos) {
+        return arrayList.get(pos).getId();
+    }
+
     @Override
     public int getItemCount() {
         return arrayList.size();
