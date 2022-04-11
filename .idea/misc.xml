@@ -3,6 +3,44 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/drawable/back_unselect_ondemandcat.xml" value="0.327" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/drawable/background_play_button_ondemand_slide.xml" value="0.327" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/drawable/bg_gradient_black.xml" value="0.327" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/drawable/border_image_radio_item.xml" value="0.327" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/drawable/global_mipmap_background.xml" value="0.327" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/drawable/gnt_outline_shape.xml" value="0.327" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/drawable/gnt_rounded_corners_shape.xml" value="0.327" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/drawable/gradient_home_cat_card.xml" value="0.327" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/activity_base.xml" value="0.19166666666666668" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/activity_city_detail.xml" value="0.3555253623188406" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/activity_ondemand.xml" value="0.3555253623188406" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/activity_ondemand_cat.xml" value="0.3555253623188406" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/fragment_home.xml" value="0.3555253623188406" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/layout_citylist.xml" value="0.3555253623188406" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/layout_cityradio_list.xml" value="0.3555253623188406" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/layout_ondemandcat.xml" value="0.3555253623188406" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/layout_radiolist.xml" value="0.3555253623188406" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/layout_radiolist_grid.xml" value="0.3555253623188406" />
+        <entry key="..\:/For Work/Code/Best-Radio-Free-Online/app/src/main/res/layout/layout_slide_ondemand_item.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/drawable/drawable_round_musicscreen.xml" value="0.2355" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/drawable/shape_bg_control.xml" value="0.196" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/drawable/shape_btn_play_collapse.xml" value="0.235" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/drawable/shape_button_control.xml" value="0.2355" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/drawable/shape_player_collapse.xml" value="0.219" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/activity_about.xml" value="0.2833333333333333" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/activity_base.xml" value="0.36666666666666664" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/activity_city_detail.xml" value="0.2833333333333333" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/fragment_cat.xml" value="0.24583333333333332" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/fragment_home.xml" value="0.24583333333333332" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/item_cityhome.xml" value="0.24583333333333332" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/item_demand_control.xml" value="0.2833333333333333" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_cityradio_list.xml" value="0.24583333333333332" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_musicsceen_control.xml" value="0.36666666666666664" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_musicsceen_control_scene2.xml" value="0.3067708333333333" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_musicsceen_main.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_musicscreen.xml" value="0.36666666666666664" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_ondemandcat.xml" value="0.2833333333333333" />
+        <entry key="..\:/ProjectAndroid/Best-Radio-Free-Online/app/src/main/res/layout/layout_radiolist_grid.xml" value="0.24583333333333332" />
         <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/drawable/bg_item_about_round.xml" value="0.1995" />
         <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/drawable/border_image.xml" value="0.3405" />
         <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/drawable/border_image_radio_item.xml" value="0.1995" />
@@ -13,107 +51,25 @@
         <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/layout_cityradio_list.xml" value="0.358695652173913" />
         <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/layout_radiolist.xml" value="0.358695652173913" />
         <entry key="..\:/Tuyen/Android/Best-Radio-Free-Online/app/src/main/res/layout/layout_radiolist_grid.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/bg_gradient_black.xml" value="0.124" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/bg_item_about_round.xml" value="0.124" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/drawable_round_musicscreen.xml" value="0.1895" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/gnt_rounded_corners_shape.xml" value="0.1895" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/shape_bg_control.xml" value="0.1895" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/shape_button_control.xml" value="0.1895" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/shape_button_play.xml" value="0.1895" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/shape_center_play.xml" value="0.1895" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/drawable/shape_collapse_btn.xml" value="0.124" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_about.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_base.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_forgotpass.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_ondemand.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_ondemand_cat.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_dailog_selecttime.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_dailog_time.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_musicsceen_control.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_musicsceen_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_musicscreen.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_theme.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tuanpc/AndroidStudioProjects/Best Radio Free Online/app/src/main/res/layout/layout_volume.xml" value="0.25416666666666665" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/bg_gradient_black.xml" value="0.13489583333333333" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/bg_item_about_round.xml" value="0.14322916666666666" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/bg_nav_view.xml" value="0.23645833333333333" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/bg_shadow.xml" value="0.14322916666666666" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/bg_shadow2.xml" value="0.26614583333333336" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/bg_shadow_bottom.xml" value="0.23645833333333333" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/bg_shadow_bottom1.xml" value="0.18645833333333334" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/custom_border_cardview.xml" value="0.26205128205128203" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/global_mipmap_background.xml" value="0.2564814814814815" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/gnt_rounded_corners_shape.xml" value="0.14322916666666666" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/gradient_home_cat_card.xml" value="0.14322916666666666" />
-        <entry key="..\:/Work/Radio/app/src/main/res/drawable/splash_shadow.xml" value="0.18333333333333332" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_about.xml" value="0.25" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_base.xml" value="0.208498023715415" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_city_detail.xml" value="0.25" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_favorite.xml" value="0.25" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_forgotpass.xml" value="0.264" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_main.xml" value="0.15625" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_ondemand.xml" value="0.2" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_ondemand_cat.xml" value="0.25" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_profile.xml" value="0.25" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_profile_edit.xml" value="0.4" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_register.xml" value="0.264" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_setting.xml" value="0.6" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_splash.xml" value="0.2" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_theme.xml" value="0.15625" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/banner_ad_containter.xml" value="0.234375" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/fragment_cat.xml" value="0.234375" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/fragment_home.xml" value="0.234375" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/fragment_suggest.xml" value="0.264" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/gnt_medium_template_view.xml" value="0.15625" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/gnt_small_template_view.xml" value="0.6" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/item_cityhome.xml" value="0.234375" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/item_demand_control.xml" value="0.234375" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_citylist.xml" value="0.1703125" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_cityradio_list.xml" value="0.264" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_cityradio_list1.xml" value="0.3713768115942029" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_dailog_selecttime.xml" value="0.15625" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_dailog_time.xml" value="0.228125" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_desc.xml" value="0.6" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_dialog_exit_app.xml" value="0.234375" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_empty.xml" value="0.25" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_languagelist.xml" value="0.4" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_musicsceen_control.xml" value="0.234375" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_musicsceen_main.xml" value="0.234375" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_musicscreen.xml" value="0.15625" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_noti_small.xml" value="0.228125" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_notification.xml" value="0.228125" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_ondemandcat.xml" value="0.176" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_privacy.xml" value="0.228125" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_progressbar.xml" value="0.228125" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_radiolist.xml" value="0.228125" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_radiolist_grid.xml" value="0.228125" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_report.xml" value="0.4" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_slide_ondemand_item.xml" value="0.234375" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_theme.xml" value="0.228125" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_volume.xml" value="0.25" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/nav_header_main.xml" value="0.25" />
-        <entry key="..\:/Work/Radio/app/src/main/res/menu/activity_main_drawer.xml" value="0.4" />
-        <entry key="..\:/Work/Radio/app/src/main/res/menu/menu_profile.xml" value="0.15625" />
-        <entry key="..\:/Work/Radio/app/src/main/res/menu/menu_search.xml" value="0.8" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.1" />
-      </ProjectState>
-    </option>
   </component>
 </project>

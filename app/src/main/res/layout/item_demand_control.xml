@@ -9,7 +9,7 @@
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/iv_thumb"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:scaleType="centerCrop"
         app:riv_corner_radius="25dp"
         android:layout_marginBottom="15dp"
@@ -22,8 +22,8 @@
         android:text="Name"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"
-        android:lines="2"
+        android:textSize="13dp"
+        android:lines="1"
         android:ellipsize="end"
         android:layout_marginBottom="5dp"
         android:textColor="@color/black"/>
@@ -34,6 +34,6 @@
         android:text="5 songs"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"
-        android:textSize="14dp"/>
+        android:textSize="12dp"/>
 
 </LinearLayout>

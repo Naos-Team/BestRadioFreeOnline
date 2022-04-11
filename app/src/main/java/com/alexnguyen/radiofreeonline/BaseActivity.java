@@ -1,5 +1,8 @@
 package com.alexnguyen.radiofreeonline;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -102,6 +105,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Scene;
+import androidx.transition.TransitionManager;
 
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
@@ -121,9 +126,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     SeekBar seekbar_song;
     LinearLayout ll_ad, ll_collapse_color, ll_player_expand, ll_play_collapse, ll_top_collapse;
     RelativeLayout rl_expand, rl_collapse, rl_song_seekbar, btn_previous_expand, btn_sleep, btn_next_expand, btn_volume;
-    CircularImageView imageView_player;
+    ImageView imageView_player;
     RoundedImageView imageView_radio;
-    ImageView imageView_play, imageView_share, imageView_next, imageView_previous, imageView_fav;
+    ImageView imageView_play, imageView_share, imageView_fav;
 //    FloatingActionButton fab_play_expand;
     TextView textView_name, textView_song, textView_freq_expand, textView_radio_expand, textView_song_expand, textView_song_duration, textView_total_duration, tv_views;
     Methods methods, methodsBack;
@@ -138,10 +143,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     MenuItem menu_login, menu_profile;
     BottomSheetDialog dialog_report;
     RecyclerView rv_suggestion;
-    RelativeLayout btn_play_music;
-    ImageView iv_play_music;
+    RelativeLayout btn_play_music, btn_previous_scene2, btn_next_scene2, btn_play_scene2;
+    ImageView iv_play_music, iv_thumb_scene2, iv_play_scene2;
     CardView btn_report;
-    LinearLayout control_dragview;
+    LinearLayout control_dragview, ll_suggest, ll_player_scene2;
+    TextView tv_songname_scene2;
+
+
 
     double current_offset = 0;
 
@@ -209,16 +217,25 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         imageView_share = findViewById(R.id.imageView_share);
         imageView_fav = findViewById(R.id.imageView_fav_expand);
         imageView_player = findViewById(R.id.imageView_player);
-        imageView_previous = findViewById(R.id.imageView_player_previous);
+//        imageView_previous = findViewById(R.id.imageView_player_previous);
         btn_previous_expand = findViewById(R.id.btn_previous_expand);
-        imageView_next = findViewById(R.id.imageView_player_next);
+//        imageView_next = findViewById(R.id.imageView_player_next);
         btn_next_expand = findViewById(R.id.btn_next_expand);
         imageView_play = findViewById(R.id.imageView_player_play);
         //imageView_desc = findViewById(R.id.imageView_desc_expand);
         btn_volume = findViewById(R.id.btn_volume);
         textView_name = findViewById(R.id.textView_player_name);
         textView_song = findViewById(R.id.textView_song_name);
+        ll_suggest = findViewById(R.id.ll_suggest);
+        ll_player_scene2 = findViewById(R.id.ll_player_scene2);
         //imageView_report = findViewById(R.id.imageView_report_expand);
+
+        iv_play_scene2 = findViewById(R.id.iv_play_scene2);
+        iv_thumb_scene2 = findViewById(R.id.iv_thumb_scene2);
+        btn_play_scene2 = findViewById(R.id.btn_play_scene2);
+        btn_previous_scene2 = findViewById(R.id.btn_previous_scene2);
+        btn_next_scene2 = findViewById(R.id.btn_next_scene2);
+        tv_songname_scene2 = findViewById(R.id.tv_songname_scene2);
 
 
         iv_play_music = findViewById(R.id.iv_play_music);
@@ -356,8 +373,61 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
                 if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
                     Log.e("AAA", "expand");
+
+                    ObjectAnimator suggestDown = ObjectAnimator.ofFloat(ll_suggest, "translationY", 220f);
+                    suggestDown.setDuration(300);
+                    suggestDown.start();
+
+
+                    ll_player_expand.animate()
+                            .alpha(0f)
+                            .setDuration(100)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    ll_player_expand.setVisibility(View.GONE);
+                                }
+                            });
+
+
+                    ll_player_scene2.animate()
+                            .alpha(1f)
+                            .setDuration(200)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+                                    ll_player_scene2.setVisibility(View.VISIBLE);
+                                }
+                            });
+
+
                 }else{
                     Log.e("AAA", "collapse");
+
+                    ObjectAnimator suggestUp = ObjectAnimator.ofFloat(ll_suggest, "translationY", 0f);
+                    suggestUp.setDuration(300);
+                    suggestUp.start();
+
+
+                    ll_player_expand.animate()
+                            .alpha(1f)
+                            .setDuration(200)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+                                    ll_player_expand.setVisibility(View.VISIBLE);
+                                }
+                            });
+
+                    ll_player_scene2.animate()
+                            .alpha(0f)
+                            .setDuration(100)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    ll_player_scene2.setVisibility(View.GONE);
+                                }
+                            });
                 }
             }
         });
@@ -389,13 +459,21 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_next.setOnClickListener(new View.OnClickListener() {
+        btn_play_scene2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 methods.showRateDialog();
-                togglePlayPosition(true);
+                clickPlay(Constants.pos, Constants.playTypeRadio);
             }
         });
+
+//        imageView_next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                methods.showRateDialog();
+//                togglePlayPosition(true);
+//            }
+//        });
 
         btn_next_expand.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -405,7 +483,23 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_previous.setOnClickListener(new View.OnClickListener() {
+        btn_next_scene2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                methods.showRateDialog();
+                togglePlayPosition(true);
+            }
+        });
+
+//        imageView_previous.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                methods.showRateDialog();
+//                togglePlayPosition(false);
+//            }
+//        });
+
+        btn_previous_expand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 methods.showRateDialog();
@@ -413,9 +507,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        btn_previous_expand.setOnClickListener(new View.OnClickListener() {
+        btn_previous_scene2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 methods.showRateDialog();
                 togglePlayPosition(false);
             }
@@ -500,6 +594,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         loadFrag(f1, getResources().getString(R.string.home), fm);
         getSupportActionBar().setTitle(getString(R.string.home));
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -721,10 +816,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             ItemRadio itemRadio = PlayService.getInstance().getPlayingRadioStation();
             if (itemRadio != null) {
                 changeText(itemRadio);
-                imageView_play.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.pause_white));
+                imageView_play.setImageDrawable(getResources().getDrawable(R.drawable.pause_2));
 //                fab_play_expand.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.fab_pause));
 
                 iv_play_music.setImageDrawable(getResources().getDrawable(R.drawable.pause_2));
+                iv_play_scene2.setImageDrawable(getResources().getDrawable(R.drawable.pause_2));
 
                 startImageAnimation();
             }
@@ -732,10 +828,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             if (Constants.arrayList_radio.size() > 0) {
                 changeText(Constants.arrayList_radio.get(Constants.pos));
             }
-            imageView_play.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.play_white));
+            imageView_play.setImageDrawable(getResources().getDrawable(R.drawable.play_2));
 //            fab_play_expand.setImageDrawable(ContextCompat.getDrawable(BaseActivity.this, R.mipmap.fab_play));
 
             iv_play_music.setImageDrawable(getResources().getDrawable(R.drawable.play_2));
+            iv_play_scene2.setImageDrawable(getResources().getDrawable(R.drawable.play_2));
 
             stopImageAnimation();
         }
@@ -767,6 +864,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             imageView_fav.setVisibility(View.GONE);
             rl_song_seekbar.setVisibility(View.VISIBLE);
         }
+        tv_songname_scene2.setText(itemRadio.getRadioName());
         textView_name.setText(itemRadio.getRadioName());
         textView_radio_expand.setText(itemRadio.getRadioName());
         tv_views.setText(itemRadio.getViews());
@@ -778,6 +876,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         Picasso.get().load(methods.getImageThumbSize(itemRadio.getRadioImageurl(), getString(R.string.home)))
                 .placeholder(R.drawable.placeholder)
                 .into(imageView_player);
+        Picasso.get().load(methods.getImageThumbSize(itemRadio.getRadioImageurl(), getString(R.string.home)))
+                .placeholder(R.drawable.placeholder)
+                .into(iv_thumb_scene2);
     }
 
     public void changeFav(ItemRadio itemRadio) {
@@ -1023,7 +1124,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         statusBarView.setBackground(methods.getGradientDrawableToolbar());
         toolbar.setBackground(methods.getGradientDrawableToolbar());
 //        fab_play_expand.setBackgroundTintList(ColorStateList.valueOf(sharedPref.getFirstColor()));
-        ll_collapse_color.setBackground(methods.getGradientDrawableToolbar());
+//        ll_collapse_color.setBackground(methods.getGradientDrawableToolbar());
         navigationView.setBackground(methods.getGradientDrawableToolbar());
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
