@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_login"
+    android:background="@drawable/bg_spalsh"
     android:fillViewport="true">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_shadow2"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -199,7 +209,7 @@
                 <cn.refactor.library.SmoothCheckBox
                     android:id="@+id/cb_rememberme"
                     android:layout_width="20dp"
-                    android:layout_height="20dp"/>
+                    android:layout_height="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -221,24 +231,24 @@
 
                 <Button
                     android:id="@+id/button_login"
-                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
+                    android:backgroundTint="#2389da"
                     android:text="@string/login"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/button_skip"
-                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:text="@string/skip"/>
+                    android:backgroundTint="#276cc7"
+                    android:text="@string/skip" />
 
             </LinearLayout>
 
@@ -292,5 +302,7 @@
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 
-</ScrollView>
+
+</RelativeLayout>

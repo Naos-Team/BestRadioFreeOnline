@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/row_layout1"
+    android:layout_marginBottom="15dp"
+    android:backgroundTint="#f1f1f1"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:background="#f3f6f4"
+    android:orientation="vertical"
+    app:cardCornerRadius="30dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="190dp"
+        android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="130dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/row_logo1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/demo_item"
+            android:elevation="20dp"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius_top_left="30dp"
+            app:riv_corner_radius_top_right="30dp"
+            tools:ignore="MissingConstraints" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView_radio_name1"
+                    android:maxWidth="125dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Name"
+                    android:textColor="#383838"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/imageView_fav"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/unfav" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/textView_list_lang1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Text"
+                    android:maxLines="1"
+                    android:textColor="#383838"
+                    android:textSize="13dp" />
+
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/imageView_eye"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/eye"/>
+
+                <TextView
+                    android:id="@+id/textView_view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="Views"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView >

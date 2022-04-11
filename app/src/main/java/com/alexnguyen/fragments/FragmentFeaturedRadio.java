@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.core.view.MenuItemCompat;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
 import android.view.LayoutInflater;
@@ -62,9 +63,10 @@ public class FragmentFeaturedRadio extends Fragment {
         button_try = rootView.findViewById(R.id.button_empty_try);
         ViewCompat.setBackgroundTintList(button_try, ColorStateList.valueOf(sharedPref.getFirstColor()));
 
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView = rootView.findViewById(R.id.recyclerView_city_detail);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setLayoutManager(gridLayoutManager);
 
         loadFeaturedRadio();
 

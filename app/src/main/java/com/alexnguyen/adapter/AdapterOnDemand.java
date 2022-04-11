@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -37,7 +39,7 @@ public class AdapterOnDemand extends RecyclerView.Adapter<AdapterOnDemand.MyView
 
         private TextView textView_title, textView_views, textView_lang;
         private ImageView imageView_fav, imageView;
-        private CardView cardView;
+        private LinearLayout cardView;
 
         private MyViewHolder(View view) {
             super(view);
@@ -46,7 +48,6 @@ public class AdapterOnDemand extends RecyclerView.Adapter<AdapterOnDemand.MyView
             textView_lang = view.findViewById(R.id.textView_list_lang);
             textView_title = view.findViewById(R.id.textView_radio_name);
             imageView = view.findViewById(R.id.row_logo);
-            imageView_fav = view.findViewById(R.id.imageView_fav);
         }
     }
 
@@ -56,9 +57,9 @@ public class AdapterOnDemand extends RecyclerView.Adapter<AdapterOnDemand.MyView
         this.filteredArrayList = list;
 
         methods = new Methods(context, interAdListener);
-        Resources r = context.getResources();
-        float padding = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, Constants.GRID_PADDING, r.getDisplayMetrics());
-        Constants.columnWidth = (int) ((methods.getScreenWidth() - ((Constants.NUM_OF_COLUMNS + 1) * padding)) / Constants.NUM_OF_COLUMNS);
+//        Resources r = context.getResources();
+//        float padding = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, Constants.GRID_PADDING, r.getDisplayMetrics());
+//        Constants.columnWidth = (int) ((methods.getScreenWidth() - ((Constants.NUM_OF_COLUMNS + 1) * padding)) / Constants.NUM_OF_COLUMNS);
     }
 
     @NonNull
@@ -73,10 +74,9 @@ public class AdapterOnDemand extends RecyclerView.Adapter<AdapterOnDemand.MyView
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
-        holder.imageView_fav.setVisibility(View.GONE);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Constants.columnWidth, (int)(Constants.columnWidth/1.5));
-        params.setMargins(0, 0, 0, 20);
-        holder.cardView.setLayoutParams(params);
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Constants.columnWidth, (int)(Constants.columnWidth/1.5));
+//        params.setMargins(0, 0, 0, 20);
+//        holder.cardView.setLayoutParams(params);
 
         holder.textView_views.setText(Methods.format(Double.parseDouble(arraylist.get(position).getViews())));
         holder.textView_title.setText(arraylist.get(position).getRadioName());

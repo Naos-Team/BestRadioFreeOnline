@@ -4,7 +4,7 @@ android {
     compileSdkVersion 30
     defaultConfig {
         applicationId "com.alexnguyen.radiofreeonline"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 5
         versionName "2.0"
@@ -71,5 +71,9 @@ dependencies {
     implementation 'com.yakivmospan:scytale:1.0.1'
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
+    implementation 'com.github.jgabrielfreitas:BlurImageView:1.0.1'
+    implementation 'io.alterac.blurkit:blurkit:1.1.0'
+    implementation 'com.github.Dimezis:BlurView:version-2.0.0'
+    implementation 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
 }
 apply plugin: 'com.google.gms.google-services'

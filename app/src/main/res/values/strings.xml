@@ -98,7 +98,7 @@
     <string name="skip">Skip</string>
     <string name="forgot_pass">Forgot Your Password?</string>
     <string name="dnt_have_acc">Dont have an account?</string>
-    <string name="signup">SingUp</string>
+    <string name="signup">SignUp</string>
     <string name="email_empty">Email cannot be empty</string>
     <string name="cannot_empty">Field cannot be empty</string>
     <string name="pass_end_space">Please do not add space at end</string>

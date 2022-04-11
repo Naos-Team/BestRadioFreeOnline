@@ -34,6 +34,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 
@@ -66,7 +67,7 @@ public class FragmentOnDemandCat extends Fragment {
         button_try = rootView.findViewById(R.id.button_empty_try);
         ViewCompat.setBackgroundTintList(button_try, ColorStateList.valueOf(sharedPref.getFirstColor()));
 
-        GridLayoutManager lLayout = new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager lLayout = new GridLayoutManager(getActivity(),2, RecyclerView.VERTICAL, false);
 
         recyclerView = rootView.findViewById(R.id.recyclerView_on);
         recyclerView.setHasFixedSize(true);

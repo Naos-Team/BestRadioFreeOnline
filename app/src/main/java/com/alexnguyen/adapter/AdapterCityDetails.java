@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alexnguyen.radiofreeonline.BuildConfig;
 import com.squareup.picasso.Picasso;
 import com.alexnguyen.interfaces.InterAdListener;
 import com.alexnguyen.item.ItemRadio;
@@ -43,11 +44,11 @@ public class AdapterCityDetails extends RecyclerView.Adapter<AdapterCityDetails.
 
         private MyViewHolder(View view) {
             super(view);
-            cardView = view.findViewById(R.id.row_layout);
-            textView_views = view.findViewById(R.id.textView_view);
-            textView_lang = view.findViewById(R.id.textView_list_lang);
-            textView_title = view.findViewById(R.id.textView_radio_name);
-            imageView = view.findViewById(R.id.row_logo);
+            cardView = view.findViewById(R.id.row_layout1);
+            textView_views = view.findViewById(R.id.textView_view1);
+            textView_lang = view.findViewById(R.id.textView_list_lang1);
+            textView_title = view.findViewById(R.id.textView_radio_name1);
+            imageView = view.findViewById(R.id.row_logo1);
             imageView_fav = view.findViewById(R.id.imageView_fav);
         }
     }
@@ -69,7 +70,7 @@ public class AdapterCityDetails extends RecyclerView.Adapter<AdapterCityDetails.
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_cityradio_list, parent, false);
+                .inflate(R.layout.layout_cityradio_list1, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -78,21 +79,32 @@ public class AdapterCityDetails extends RecyclerView.Adapter<AdapterCityDetails.
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         Boolean isFav = checkFav(position);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Constants.columnWidth, Constants.columnWidth);
-        params.setMargins(0, 0, 0, 20);
-        holder.cardView.setLayoutParams(params);
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Constants.columnWidth, Constants.columnWidth);
+//        params.setMargins(0, 0, 0, 20);
+//        holder.cardView.setLayoutParams(params);
         if (isFav) {
-            holder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav_hover));
+            holder.imageView_fav.setImageResource(R.drawable.fav);
         } else {
-            holder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav));
+            holder.imageView_fav.setImageResource(R.drawable.unfav);
         }
 
         holder.textView_views.setText(Methods.format(Double.parseDouble(arraylist.get(position).getViews())));
         holder.textView_title.setText(arraylist.get(position).getRadioName());
         holder.textView_lang.setText(arraylist.get(position).getLanguage());
 
+        String url = methods.getImageThumbSize(arraylist.get(holder.getAdapterPosition()).getRadioImageurl(),"");
+        String url1 = "";
+
+        if (url.contains(BuildConfig.SERVER_URL)){
+            url1 = url;
+        }
+        else{
+            url1 = BuildConfig.SERVER_URL + url;
+        }
+
+
         Picasso.get()
-                .load(methods.getImageThumbSize(arraylist.get(holder.getAdapterPosition()).getRadioImageurl(),""))
+                .load(url1)
                 .into(holder.imageView);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -107,10 +119,10 @@ public class AdapterCityDetails extends RecyclerView.Adapter<AdapterCityDetails.
             @Override
             public void onClick(View view) {
                 if (dbHelper.addORremoveFav(arraylist.get(holder.getAdapterPosition()))) {
-                    holder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav_hover));
+                    holder.imageView_fav.setImageResource(R.drawable.fav);
                     methods.showToast(context.getString(R.string.add_to_fav));
                 } else {
-                    holder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav));
+                    holder.imageView_fav.setImageResource(R.drawable.unfav);
                     methods.showToast(context.getString(R.string.remove_from_fav));
                 }
             }
