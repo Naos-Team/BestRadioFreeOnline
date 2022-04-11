@@ -2,7 +2,6 @@ package com.alexnguyen.radiofreeonline;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
-import android.app.NativeActivity;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -26,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -34,13 +34,11 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.alexnguyen.adapter.AdapterSuggest;
+import com.alexnguyen.fragments.FragmentExitDialog;
 import com.alexnguyen.interfaces.BackInterAdListener;
-import com.alexnguyen.utils.NativeTemplateStyle;
-import com.alexnguyen.utils.TemplateView;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.formats.UnifiedNativeAd;
-import com.google.android.gms.ads.nativead.NativeAd;
+import com.alexnguyen.interfaces.CityClickListener;
+import com.alexnguyen.item.ItemOnDemandCat;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -63,7 +61,6 @@ import com.alexnguyen.fragments.FragmentOnDemandDetails;
 import com.alexnguyen.fragments.FragmentSearch;
 import com.alexnguyen.fragments.FragmentSuggestion;
 import com.alexnguyen.interfaces.AboutListener;
-import com.alexnguyen.interfaces.AdConsentListener;
 import com.alexnguyen.interfaces.InterAdListener;
 import com.alexnguyen.interfaces.RadioViewListener;
 import com.alexnguyen.interfaces.SuccessListener;
@@ -81,6 +78,7 @@ import com.warkiz.widget.IndicatorSeekBar;
 import com.warkiz.widget.OnSeekChangeListener;
 import com.warkiz.widget.SeekParams;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -98,6 +96,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
@@ -107,21 +108,20 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     StatusBarView statusBarView;
     FragmentManager fm;
     NavigationView navigationView;
-    SlidingUpPanelLayout slidingPanel;
+    SlidingUpPanelLayout slidingPanel, sliding_layout_main;
     BottomSheetDialog dialog_desc;
     DBHelper dbHelper;
     AdConsent adConsent;
     ProgressDialog progressDialog;
     CircularProgressBar circularProgressBar, circularProgressBar_collapse;
     SeekBar seekbar_song;
-    LinearLayout ll_ad, ll_collapse_color, ll_player_expand, ll_play_collapse;
-    RelativeLayout rl_expand, rl_collapse, rl_song_seekbar;
+    LinearLayout ll_ad, ll_collapse_color, ll_player_expand, ll_play_collapse, ll_top_collapse;
+    RelativeLayout rl_expand, rl_collapse, rl_song_seekbar, btn_previous_expand, btn_sleep, btn_next_expand, btn_volume;
     CircularImageView imageView_player;
     RoundedImageView imageView_radio;
-    public ImageView imageView_sleep;
-    ImageView imageView_report, imageView_play, imageView_share, imageView_next, imageView_previous, imageView_next_expand, imageView_previous_expand, imageView_fav, imageView_collapse, imageView_desc, imageView_volume;
+    ImageView imageView_play, imageView_share, imageView_next, imageView_previous, imageView_fav;
     FloatingActionButton fab_play_expand;
-    TextView textView_name, textView_song, textView_freq_expand, textView_radio_expand, textView_radio_expand2, textView_song_expand, textView_song_duration, textView_total_duration;
+    TextView textView_name, textView_song, textView_freq_expand, textView_radio_expand, textView_song_expand, textView_song_duration, textView_total_duration;
     Methods methods, methodsBack;
     LoadAbout loadAbout;
     DrawerLayout drawer;
@@ -133,6 +133,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     Handler handler = new Handler();
     MenuItem menu_login, menu_profile;
     BottomSheetDialog dialog_report;
+    RecyclerView rv_suggestion;
+
+    double current_offset = 0;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -178,6 +181,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         slidingPanel = findViewById(R.id.sliding_layout);
+        sliding_layout_main = findViewById(R.id.sliding_layout_main);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Menu menu = navigationView.getMenu();
@@ -186,29 +190,28 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         changeLoginName();
 
+        rv_suggestion = findViewById(R.id.rv_suggestion);
         circularProgressBar = findViewById(R.id.loader);
         circularProgressBar_collapse = findViewById(R.id.loader_collapse);
         seekbar_song = findViewById(R.id.seekbar_song);
-        imageView_sleep = findViewById(R.id.imageView_sleep_expand);
+        btn_sleep = findViewById(R.id.btn_sleep_expand);
         imageView_share = findViewById(R.id.imageView_share);
         imageView_fav = findViewById(R.id.imageView_fav_expand);
         imageView_player = findViewById(R.id.imageView_player);
         imageView_previous = findViewById(R.id.imageView_player_previous);
-        imageView_previous_expand = findViewById(R.id.imageView_previous_expand);
+        btn_previous_expand = findViewById(R.id.btn_previous_expand);
         imageView_next = findViewById(R.id.imageView_player_next);
-        imageView_next_expand = findViewById(R.id.imageView_next_expand);
+        btn_next_expand = findViewById(R.id.btn_next_expand);
         imageView_play = findViewById(R.id.imageView_player_play);
-        imageView_desc = findViewById(R.id.imageView_desc_expand);
-        imageView_volume = findViewById(R.id.imageView_volume);
+        //imageView_desc = findViewById(R.id.imageView_desc_expand);
+        btn_volume = findViewById(R.id.btn_volume);
         textView_name = findViewById(R.id.textView_player_name);
         textView_song = findViewById(R.id.textView_song_name);
-        imageView_collapse = findViewById(R.id.imageView_collapse);
-        imageView_report = findViewById(R.id.imageView_report_expand);
+        //imageView_report = findViewById(R.id.imageView_report_expand);
 
         fab_play_expand = findViewById(R.id.fab_play);
         imageView_radio = findViewById(R.id.imageView_radio);
         textView_radio_expand = findViewById(R.id.textView_radio_name_expand);
-        textView_radio_expand2 = findViewById(R.id.textView_radio_expand);
         textView_freq_expand = findViewById(R.id.textView_freq_expand);
         textView_song_expand = findViewById(R.id.textView_song_expand);
         textView_song_duration = findViewById(R.id.textView_song_duration);
@@ -216,6 +219,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         ll_player_expand = findViewById(R.id.ll_player_expand);
         ll_play_collapse = findViewById(R.id.ll_play_collapse);
+        ll_top_collapse = findViewById(R.id.ll_top_collapse);
         rl_song_seekbar = findViewById(R.id.rl_song_seekbar);
         rl_collapse = findViewById(R.id.ll_collapse);
         ll_collapse_color = findViewById(R.id.ll_collapse_color);
@@ -275,6 +279,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        ll_top_collapse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            }
+        });
+
         slidingPanel.setDragView(rl_collapse);
         slidingPanel.setShadowHeight(0);
         slidingPanel.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
@@ -309,6 +320,26 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
+
+        sliding_layout_main.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
+
+
+            }
+
+            @Override
+            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+                if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                    Log.e("AAA", "expand");
+                }else{
+                    Log.e("AAA", "collapse");
+                }
+            }
+        });
+
+
         imageView_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -335,7 +366,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_next_expand.setOnClickListener(new View.OnClickListener() {
+        btn_next_expand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 methods.showRateDialog();
@@ -351,7 +382,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_previous_expand.setOnClickListener(new View.OnClickListener() {
+        btn_previous_expand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 methods.showRateDialog();
@@ -387,22 +418,16 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_collapse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-            }
-        });
 
-        imageView_desc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                methods.showRateDialog();
-                showBottomSheetDialog();
-            }
-        });
+//        imageView_desc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                methods.showRateDialog();
+//                showBottomSheetDialog();
+//            }
+//        });
 
-        imageView_volume.setOnClickListener(new View.OnClickListener() {
+        btn_volume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 methods.showRateDialog();
@@ -410,7 +435,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_sleep.setOnClickListener(new View.OnClickListener() {
+        btn_sleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 methods.showRateDialog();
@@ -422,14 +447,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageView_report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Constants.arrayList_radio.size() > 0) {
-                    showReportDialog();
-                }
-            }
-        });
+//        imageView_report.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (Constants.arrayList_radio.size() > 0) {
+//                    showReportDialog();
+//                }
+//            }
+//        });
 
         if (!Constants.pushRID.equals("0")) {
             progressDialog.show();
@@ -569,6 +594,30 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+
+    public void LoadDemandList(ArrayList<ItemOnDemandCat> arrayList_demand){
+
+        ArrayList<ItemOnDemandCat> arrayList_random = new ArrayList<>();
+
+        for (int i = 0; i < 6; i++)
+        {
+            // generating the index using Math.random()
+            int index = (int)(Math.random() * arrayList_demand.size());
+
+            if(arrayList_random.contains(arrayList_demand.get(index))){
+                i--;
+            }else{
+                arrayList_random.add(arrayList_demand.get(index));
+            }
+
+        }
+
+        AdapterSuggest adapterSuggest = new AdapterSuggest(arrayList_random);
+
+        rv_suggestion.setLayoutManager(new GridLayoutManager(this, 3));
+        rv_suggestion.setAdapter(adapterSuggest);
+    }
+
     private void popUpSlidingPanel(){
         slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
     }
@@ -595,7 +644,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     public void changeText(ItemRadio itemRadio) {
         if (Constants.playTypeRadio) {
             textView_freq_expand.setText(itemRadio.getRadioFreq() + " " + getString(R.string.HZ));
-            textView_radio_expand2.setText(getString(R.string.radio));
             changeSongName(Constants.song_name);
             changeFav(itemRadio);
 
@@ -611,7 +659,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         } else {
             textView_total_duration.setText(itemRadio.getDuration());
-            textView_radio_expand2.setText(getString(R.string.on_demand));
             textView_song.setText(getString(R.string.on_demand));
             textView_song_expand.setText(itemRadio.getRadioName());
 
@@ -675,23 +722,30 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void openQuitDialog() {
-        AlertDialog.Builder alert;
-        alert = new AlertDialog.Builder(BaseActivity.this, R.style.AlertDialogTheme);
-        alert.setTitle(R.string.app_name);
-        alert.setIcon(R.mipmap.app_icon);
-        alert.setMessage(getString(R.string.sure_quit));
-
-        alert.setPositiveButton(R.string.exit, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+//        AlertDialog.Builder alert;
+//        alert = new AlertDialog.Builder(BaseActivity.this, R.style.Widget_MaterialComponents_MaterialCalendar_Day);
+//        alert.setTitle(R.string.app_name);
+//        alert.setIcon(R.mipmap.app_icon);
+//        alert.setMessage(getString(R.string.sure_quit));
+//
+//        alert.setPositiveButton(R.string.exit, new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int whichButton) {
+//                finish();
+//            }
+//        });
+//
+//        alert.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//            }
+//        });
+//       alert.show();
+        FragmentExitDialog fragmentExitDialog = new FragmentExitDialog(new CityClickListener() {
+            @Override
+            public void onClick() {
                 finish();
             }
         });
-
-        alert.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        alert.show();
+        fragmentExitDialog.show(getSupportFragmentManager(), "fragment");
     }
 
     private InterAdListener interAdListener = new InterAdListener() {
@@ -947,13 +1001,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     public void setBuffer(Boolean flag) {
         if (flag) {
             circularProgressBar.setVisibility(View.VISIBLE);
-            ll_player_expand.setVisibility(View.INVISIBLE);
+            //ll_player_expand.setVisibility(View.INVISIBLE);
             circularProgressBar_collapse.setVisibility(View.VISIBLE);
             ll_play_collapse.setVisibility(View.INVISIBLE);
         } else {
             circularProgressBar.setVisibility(View.INVISIBLE);
-            ll_player_expand.setVisibility(View.VISIBLE);
-            circularProgressBar_collapse.setVisibility(View.INVISIBLE);
+            //ll_player_expand.setVisibility(View.VISIBLE);
+            circularProgressBar_collapse.setVisibility(View.GONE);
             ll_play_collapse.setVisibility(View.VISIBLE);
         }
     }
@@ -1000,7 +1054,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         popupWindow.setContentView(view);
-        popupWindow.showOnAnchor(imageView_volume, RelativePopupWindow.VerticalPosition.ABOVE, RelativePopupWindow.HorizontalPosition.CENTER);
+        popupWindow.showOnAnchor(btn_volume, RelativePopupWindow.VerticalPosition.ABOVE, RelativePopupWindow.HorizontalPosition.CENTER);
     }
 
     private void openTimeSelectDialog() {

@@ -15,11 +15,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.daimajia.slider.library.SliderLayout
-                android:id="@+id/sliderLayout"
+<!--            <com.daimajia.slider.library.SliderLayout-->
+<!--                android:id="@+id/sliderLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="220dp"-->
+<!--                android:layout_margin="5dp"/>-->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager_slide"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:layout_margin="5dp"/>
+                android:layout_margin="5dp"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"/>
             <LinearLayout
                 android:id="@+id/ll_adView"
                 android:layout_width="match_parent"

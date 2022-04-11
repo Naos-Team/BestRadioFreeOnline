@@ -18,20 +18,17 @@
             android:layout_height="150dp"
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
-            card_view:cardCornerRadius="10dp"
             card_view:cardPreventCornerOverlap="false"
-            card_view:elevation="4dp">
+            card_view:elevation="10dp">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imageView_radio_home"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
-            </RelativeLayout>
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:background="@drawable/border_image_radio_item"
+                android:id="@+id/imageView_radio_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                card_view:riv_corner_radius="20dp"
+                android:scaleType="centerCrop"
+                android:padding="0.5dp"/>
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout
