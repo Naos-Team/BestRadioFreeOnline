@@ -80,6 +80,18 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
     private AdapterHomeCity adapterHomeCity;
     private AdapterHomeLanguage adapterHomeLanguage;
     private int page = 1;
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            int currentPosition = viewpager_slide.getCurrentItem();
+            if(currentPosition == arrayList_ondemandcat.size() - 1){
+                viewpager_slide.setCurrentItem(0);
+            } else {
+                viewpager_slide.setCurrentItem(currentPosition + 1);
+            }
+        }
+    };
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -553,6 +565,9 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
 //        sliderLayout.setDuration(5000);
 
         Handler handler = new Handler(Looper.getMainLooper());
+        if(runnable != null){
+            runnable = null;
+        }
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
