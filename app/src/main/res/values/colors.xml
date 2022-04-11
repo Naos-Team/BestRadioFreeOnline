@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2192C1</color>
-    <color name="colorPrimaryDark">#19698A</color>
-    <color name="colorAccent">#EBDB3A</color>
 
-    <color name="main_color">#373cb2</color>
+<!--    <color name="colorPrimary">#2192C1</color>-->
+    <color name="colorPrimary">#373cb2</color>
+    <color name="colorPrimaryDark">#373cb2</color>
+    <color name="colorAccent">#EBDB3A</color>
 
     <color name="nav_hover">#20000000</color>
     <color name="nav_selected">#efefef</color>
@@ -15,7 +15,7 @@
     <color name="white50">#50FFFFFF</color>
 
     <color name="title_home">#4D4F54</color>
-
+    <color name="main_color">#373cb2</color>
     <!--City Details Colors-->
     <color name="bg_radio_detail_light_1">#A00a0505</color>
     <color name="bg_radio_detail_light_2">#200a0505</color>

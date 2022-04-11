@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_login">
+    android:background="@drawable/bg_spalsh">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_shadow2"/>
 
     <com.alexnguyen.utils.StatusBarView
         android:id="@+id/statusBar"

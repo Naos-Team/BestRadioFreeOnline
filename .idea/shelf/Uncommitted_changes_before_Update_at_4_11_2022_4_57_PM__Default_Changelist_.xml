@@ -1,0 +1,34 @@
+<changelist name="Uncommitted_changes_before_Update_at_4_11_2022_4_57_PM_[Default_Changelist]" date="1649671051262" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_4_57_PM_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 4/11/2022 4:57 PM [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable/unfav.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_4_57_PM_[Default_Changelist]/unfav.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/src/main/res/drawable/placeholder_upload.png" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable/placeholder_upload.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_4_57_PM_[Default_Changelist]/placeholder_upload.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/src/main/res/drawable/eye.png" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable/eye.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_4_57_PM_[Default_Changelist]/eye.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable/fav.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_4_57_PM_[Default_Changelist]/fav.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable/icon_splash.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_4_57_PM_[Default_Changelist]/icon_splash.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable/bg_spalsh.jpg" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_4_57_PM_[Default_Changelist]/bg_spalsh.jpg" />
+  </binary>
+</changelist>

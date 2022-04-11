@@ -1,6 +1,7 @@
 package com.alexnguyen.fragments;
 
 import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jgabrielfreitas.core.BlurImageView;
 import com.squareup.picasso.Picasso;
 import com.alexnguyen.adapter.AdapterOnDemand;
 import com.alexnguyen.asyncTasks.LoadOnDemand;
@@ -32,19 +34,23 @@ import androidx.core.view.MenuItemCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import eightbitlab.com.blurview.BlurView;
+import eightbitlab.com.blurview.RenderScriptBlur;
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 
 public class FragmentOnDemandDetails extends Fragment {
 
     private RecyclerView recyclerView;
     private AdapterOnDemand adapter;
-    private ImageView imageView_ondemand;
+    private ImageView imageView_ondemand, imageView_blur;
     private SearchView searchView;
+    private TextView textView_name_ondemand,textView_empty;
     private ArrayList<ItemRadio> arraylist;
     private ItemOnDemandCat itemOnDemandCat;
     private CircularProgressBar progressBar;
-    private TextView textView_empty;
     public static AppCompatButton button_try;
     private LinearLayout ll_empty;
     private String errr_msg;
@@ -62,6 +68,8 @@ public class FragmentOnDemandDetails extends Fragment {
 
         arraylist = new ArrayList<>();
         imageView_ondemand = rootView.findViewById(R.id.imageView_ondemand);
+        imageView_blur = rootView.findViewById(R.id.imageview_ondemand_blur);
+        textView_name_ondemand = rootView.findViewById(R.id.tview_name_ondemand);
         progressBar = rootView.findViewById(R.id.progressBar_on);
 
         ll_empty = rootView.findViewById(R.id.ll_empty);
@@ -73,7 +81,13 @@ public class FragmentOnDemandDetails extends Fragment {
                 .load(itemOnDemandCat.getImage())
                 .into(imageView_ondemand);
 
-        GridLayoutManager lLayout = new GridLayoutManager(getActivity(), 2);
+        Picasso.get()
+                .load(itemOnDemandCat.getImage())
+                .into(imageView_blur);
+
+        textView_name_ondemand.setText(itemOnDemandCat.getName());
+
+        LinearLayoutManager lLayout = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
         recyclerView = rootView.findViewById(R.id.recyclerView_on);
         recyclerView.setHasFixedSize(true);

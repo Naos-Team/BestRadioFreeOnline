@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -33,14 +34,13 @@ public class AdapterOnDemandCat extends RecyclerView.Adapter<AdapterOnDemandCat.
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView_title, textView_total_items;
+        private TextView textView_title;
         private ImageView imageView;
         private CardView cardView;
 
         private MyViewHolder(View view) {
             super(view);
             cardView = view.findViewById(R.id.row_layout);
-            textView_total_items = view.findViewById(R.id.textView_total_items);
             textView_title = view.findViewById(R.id.textView_radio_name);
             imageView = view.findViewById(R.id.row_logo);
         }
@@ -69,15 +69,14 @@ public class AdapterOnDemandCat extends RecyclerView.Adapter<AdapterOnDemandCat.
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Constants.columnWidth, (int) (Constants.columnWidth / 1.5));
-        params.setMargins(0, 0, 0, 20);
-        holder.cardView.setLayoutParams(params);
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Constants.columnWidth, (int) (Constants.columnWidth / 1.5));
+//        params.setMargins(0, 0, 0, 20);
+//        holder.cardView.setLayoutParams(params);
 
-        holder.textView_total_items.setText(context.getString(R.string.items) + "(" + arraylist.get(position).getTotalItems() + ")");
         holder.textView_title.setText(arraylist.get(position).getName());
 
         Picasso.get()
-                .load(methods.getImageThumbSize(arraylist.get(holder.getAdapterPosition()).getThumb(),context.getString(R.string.on_demand)))
+                .load(methods.getImageThumbSize(arraylist.get(holder.getAdapterPosition()).getImage(),context.getString(R.string.on_demand)))
                 .into(holder.imageView);
     }
 

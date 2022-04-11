@@ -1,104 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/row_layout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:layout_marginBottom="7dp"
+    android:layout_height="wrap_content"
     android:layout_marginEnd="7dp"
     android:layout_marginRight="7dp"
-    android:background="@color/white"
-    android:orientation="vertical"
-    app:cardCornerRadius="2dp"
-    app:cardElevation="2dp"
+    android:layout_marginBottom="35dp"
+    android:background="@null"
+    android:orientation="horizontal"
     app:cardUseCompatPadding="true">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/row_layout"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/row_logo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_above="@+id/textView_radio_name"
             android:scaleType="centerCrop"
             android:src="@drawable/demo_item"
-            app:riv_corner_radius_top_left="2dp"
-            app:riv_corner_radius_top_right="2dp" />
+            app:riv_corner_radius_top_left="18dp"
+            app:riv_corner_radius_top_right="18dp"
+            app:riv_corner_radius_bottom_left="18dp"
+            app:riv_corner_radius_bottom_right="18dp"/>
 
-        <View
-            android:id="@+id/view_black"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/textView_radio_name"
-            android:background="@drawable/bg_gradient_black" />
-
-        <ImageView
-            android:id="@+id/imageView_fav"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            app:srcCompat="@mipmap/fav" />
-
-        <TextView
-            android:id="@+id/textView_view"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textView_radio_name"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="6dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginRight="6dp"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
 
-        <ImageView
-            android:id="@+id/imageView_eye"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_above="@+id/textView_radio_name"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_toLeftOf="@+id/textView_view"
-            android:layout_toStartOf="@+id/textView_view"
-            app:srcCompat="@drawable/eye" />
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/textView_radio_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:ellipsize="end"
+                    android:hint="Name"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView_eye"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginRight="6dp"
+                        app:srcCompat="@drawable/eye" />
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/textView_view"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:hint="Views"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="50dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/textView_list_lang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textView_radio_name"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
-            android:layout_toLeftOf="@+id/imageView_eye"
-            android:layout_toStartOf="@+id/imageView_eye"
-            android:ellipsize="end"
+            android:hint="Text"
             android:maxLines="1"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="13dp" />
 
-        <TextView
-            android:id="@+id/textView_radio_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="7dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout >

@@ -25,8 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_margin="5dp"
-                android:paddingStart="50dp"
-                android:paddingEnd="50dp"/>
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"/>
             <LinearLayout
                 android:id="@+id/ll_adView"
                 android:layout_width="match_parent"

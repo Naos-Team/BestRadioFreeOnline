@@ -36,14 +36,16 @@
 
                     <com.alexnguyen.utils.StatusBarView
                         android:id="@+id/statusBar"
+                        app:layout_scrollFlags="scroll"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
                     <androidx.appcompat.widget.Toolbar
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
+                        app:layout_scrollFlags="scroll"
                         android:layout_height="?android:attr/actionBarSize"
-                        android:background="@color/colorPrimary"
+                        android:background="@color/main_color"
                         sothree:popupTheme="@style/AppTheme.PopupOverlay" />
 
                 </com.google.android.material.appbar.AppBarLayout>

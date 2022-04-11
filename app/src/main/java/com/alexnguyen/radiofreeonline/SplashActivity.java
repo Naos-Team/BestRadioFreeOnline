@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ProgressBar;
 
 import com.alexnguyen.asyncTasks.LoadAbout;
 import com.alexnguyen.asyncTasks.LoadLogin;
@@ -16,29 +19,41 @@ import com.alexnguyen.utils.Constants;
 import com.alexnguyen.utils.DBHelper;
 import com.alexnguyen.utils.Methods;
 import com.alexnguyen.utils.SharedPref;
+import com.daimajia.androidanimations.library.Techniques;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
+import com.github.ybq.android.spinkit.style.Wave;
+import com.viksaa.sssplash.lib.activity.AwesomeSplash;
+import com.viksaa.sssplash.lib.cnst.Flags;
+import com.viksaa.sssplash.lib.model.ConfigSplash;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
-
     SharedPref sharedPref;
     Methods methods;
     DBHelper dbHelper;
     AppOpenManager appOpenManager;
+    ProgressBar progressBar;
+    Sprite doubleBounce;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         appOpenManager = new AppOpenManager(this);
         hideStatusBar();
         methods = new Methods(this);
         sharedPref = new SharedPref(this);
         dbHelper = new DBHelper(this);
+        progressBar = findViewById(R.id.progressbar_login);
+        doubleBounce = new DoubleBounce();
+        progressBar.setIndeterminateDrawable(new Wave());
 
         new Handler().postDelayed(new Runnable() {
             @Override

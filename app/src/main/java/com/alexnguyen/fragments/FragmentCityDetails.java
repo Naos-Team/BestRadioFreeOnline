@@ -30,6 +30,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 
@@ -64,9 +65,10 @@ public class FragmentCityDetails extends Fragment {
 
         arrayList = new ArrayList<>();
 
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView = rootView.findViewById(R.id.recyclerView_city_detail);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setLayoutManager(gridLayoutManager);
 
         loadRadioByCat();
 

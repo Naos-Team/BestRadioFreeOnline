@@ -67,11 +67,11 @@ public class AdapterRadios extends RecyclerView.Adapter {
 
         private MyViewHolder(View view) {
             super(view);
-            cardView = view.findViewById(R.id.row_layout);
-            textView_views = view.findViewById(R.id.textView_view);
-            textView_lang = view.findViewById(R.id.textView_list_lang);
-            textView_title = view.findViewById(R.id.textView_radio_name);
-            imageView = view.findViewById(R.id.row_logo);
+            cardView = view.findViewById(R.id.row_layout1);
+            textView_views = view.findViewById(R.id.textView_view1);
+            textView_lang = view.findViewById(R.id.textView_list_lang1);
+            textView_title = view.findViewById(R.id.textView_radio_name1);
+            imageView = view.findViewById(R.id.row_logo1);
             imageView_fav = view.findViewById(R.id.imageView_fav);
         }
     }
@@ -97,7 +97,7 @@ public class AdapterRadios extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         switch (viewType){
             case VIEW_ITEM:
-                View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_cityradio_list, parent, false);
+                View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_cityradio_list1, parent, false);
                 return new MyViewHolder(itemView);
             case Constants.ITEM_BANNER_AD:
                 View bannerAdView = LayoutInflater.from(parent.getContext())
@@ -133,13 +133,13 @@ public class AdapterRadios extends RecyclerView.Adapter {
                 final MyViewHolder holder = (MyViewHolder) viewHolder;
                 Boolean isFav = checkFav(position);
 
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Constants.columnWidth, Constants.columnWidth);
-                params.setMargins(0, 0, 0, 20);
-                holder.cardView.setLayoutParams(params);
+//                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Constants.columnWidth, Constants.columnWidth);
+//                params.setMargins(0, 0, 0, 20);
+//                holder.cardView.setLayoutParams(params);
                 if (isFav) {
-                    holder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav_hover));
+                    holder.imageView_fav.setImageResource(R.drawable.fav);
                 } else {
-                    holder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav));
+                    holder.imageView_fav.setImageResource(R.drawable.unfav);
                 }
 
                 ItemRadio item = (ItemRadio) arraylist.get(position);
@@ -165,10 +165,10 @@ public class AdapterRadios extends RecyclerView.Adapter {
                     @Override
                     public void onClick(View view) {
                         if (dbHelper.addORremoveFav(itemPosition)) {
-                            holder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav_hover));
+                            holder.imageView_fav.setImageResource(R.drawable.fav);
                             methods.showToast(context.getString(R.string.add_to_fav));
                         } else {
-                            holder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav));
+                            holder.imageView_fav.setImageResource(R.drawable.unfav);
                             methods.showToast(context.getString(R.string.remove_from_fav));
                         }
                     }

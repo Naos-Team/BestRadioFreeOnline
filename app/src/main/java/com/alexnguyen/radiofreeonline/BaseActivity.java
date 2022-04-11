@@ -36,7 +36,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.alexnguyen.adapter.AdapterSuggest;
+import com.alexnguyen.fragments.FragmentExitDialog;
 import com.alexnguyen.interfaces.BackInterAdListener;
+import com.alexnguyen.interfaces.CityClickListener;
 import com.alexnguyen.item.ItemOnDemandCat;
 import com.alexnguyen.utils.RecyclerItemClickListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -822,23 +824,30 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void openQuitDialog() {
-        AlertDialog.Builder alert;
-        alert = new AlertDialog.Builder(BaseActivity.this, R.style.AlertDialogTheme);
-        alert.setTitle(R.string.app_name);
-        alert.setIcon(R.mipmap.app_icon);
-        alert.setMessage(getString(R.string.sure_quit));
-
-        alert.setPositiveButton(R.string.exit, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+//        AlertDialog.Builder alert;
+//        alert = new AlertDialog.Builder(BaseActivity.this, R.style.Widget_MaterialComponents_MaterialCalendar_Day);
+//        alert.setTitle(R.string.app_name);
+//        alert.setIcon(R.mipmap.app_icon);
+//        alert.setMessage(getString(R.string.sure_quit));
+//
+//        alert.setPositiveButton(R.string.exit, new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int whichButton) {
+//                finish();
+//            }
+//        });
+//
+//        alert.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//            }
+//        });
+//       alert.show();
+        FragmentExitDialog fragmentExitDialog = new FragmentExitDialog(new CityClickListener() {
+            @Override
+            public void onClick() {
                 finish();
             }
         });
-
-        alert.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        alert.show();
+        fragmentExitDialog.show(getSupportFragmentManager(), "fragment");
     }
 
     private InterAdListener interAdListener = new InterAdListener() {
@@ -869,6 +878,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
