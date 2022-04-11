@@ -49,179 +49,222 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="10dp">
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fab_play"
-                    android:layout_width="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/fab_play"
-                    app:fabSize="normal"
-                    android:layout_alignParentRight="true" />
-
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/imageView_radio"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:adjustViewBounds="true"
-                    android:elevation="5dp"
                     android:scaleType="centerCrop"
                     android:visibility="visible"
+                    app:riv_border_color="#3396D3"
+                    app:riv_border_width="1dp"
                     app:riv_mutate_background="false"
                     app:riv_oval="true"
                     tools:targetApi="lollipop" />
+
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/shape_center_play">
+
+                    <fr.castorflex.android.circularprogressbar.CircularProgressBar
+                        android:id="@+id/loader"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:indeterminate="true"
+                        android:visibility="gone"
+                        app:cpb_color="@color/main_color"
+                        app:cpb_min_sweep_angle="10"
+                        app:cpb_rotation_speed="1.0"
+                        app:cpb_stroke_width="5dp"
+                        app:cpb_sweep_speed="1.0" />
+                </RelativeLayout>
+
 
                 <com.alexnguyen.utils.TemplateView
                     android:id="@+id/my_template_native_ads"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:translationZ="90dp"
                     android:visibility="gone"
                     app:gnt_template_type="@layout/gnt_medium_template_view" />
 
-            </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/btn_play_music"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/shape_button_play">
 
-            <fr.castorflex.android.circularprogressbar.CircularProgressBar
-                android:id="@+id/loader"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerInParent="true"
-                android:indeterminate="true"
-                android:visibility="gone"
-                app:cpb_color="@color/main_color"
-                app:cpb_min_sweep_angle="10"
-                app:cpb_rotation_speed="1.0"
-                app:cpb_stroke_width="5dp"
-                app:cpb_sweep_speed="1.0" />
+                    <ImageView
+                        android:id="@+id/iv_play_music"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/play_2" />
+
+                </RelativeLayout>
+
+<!--                <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                    android:id="@+id/fab_play"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:elevation="0dp"-->
+<!--                    android:src="@mipmap/fab_play"-->
+<!--                    app:fabSize="normal" />-->
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="35dp"
-                android:orientation="vertical">
-
-
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_marginBottom="200dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/textView_freq_expand"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginHorizontal="35dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="fdfdsfds"
-                        android:maxLines="1"
-                        android:textSize="19sp" />
+                        android:gravity="center_vertical|right"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/textView_freq_expand"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="fdfdsfds"
+                            android:maxLines="1"
+                            android:textSize="19sp" />
 
-                    <ImageView
-                        android:id="@+id/imageView_fav_expand"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:contentDescription="@string/image"
-                        android:padding="7dp"
-                        android:tint="@color/black"
-                        android:src="@mipmap/fav_white" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="right">
+                            <ImageView
+                                android:id="@+id/imageView_fav_expand"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:contentDescription="@string/image"
+                                android:padding="7dp"
+                                android:tint="@color/black"
+                                android:src="@mipmap/fav_white" />
 
-                    <ImageView
-                        android:id="@+id/imageView_share"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:contentDescription="@string/image"
-                        android:tint="@color/black"
-                        android:padding="7dp"
-                        android:src="@mipmap/share" />
+                            <ImageView
+                                android:id="@+id/imageView_share"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:contentDescription="@string/image"
+                                android:tint="@color/black"
+                                android:padding="7dp"
+                                android:src="@mipmap/share" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_radio_name_expand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="fsdfds"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:textColor="@color/black"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/textView_song_expand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:text="fsdfsdf"
+                        android:maxLines="2"
+                        android:minLines="2"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <!--                <LinearLayout-->
+                    <!--                    android:visibility="gone"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:layout_marginLeft="20dp"-->
+                    <!--                    android:layout_marginTop="5dp"-->
+                    <!--                    android:layout_marginRight="20dp"-->
+                    <!--                    android:layout_marginBottom="5dp"-->
+                    <!--                    android:gravity="center"-->
+                    <!--                    android:orientation="horizontal">-->
+
+                    <!--
+
+                    <!                    <ImageView-->
+                    <!--                        android:id="@+id/imageView_sleep_expand"-->
+                    <!--                        android:layout_width="40dp"-->
+                    <!--                        android:layout_height="40dp"-->
+                    <!--                        android:layout_gravity="end"-->
+                    <!--                        android:background="?attr/selectableItemBackground"-->
+                    <!--                        android:contentDescription="@string/image"-->
+                    <!--                        android:padding="7dp"-->
+                    <!--                        android:tint="@color/black"-->
+                    <!--                        android:src="@mipmap/sleep" />-->
+
+                    <!--                </LinearLayout>-->
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView_radio_name_expand"
+                <RelativeLayout
+                    android:id="@+id/rl_song_seekbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="fsdfds"
-                    android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:layout_marginTop="30dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="8dp">
 
-                <TextView
-                    android:id="@+id/textView_song_expand"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp"
-                    android:text="fsdfsdf"
-                    android:maxLines="2"
-                    android:minLines="2"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/textView_song_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginLeft="11dp"
+                        android:text="0:00"
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
 
-<!--                <LinearLayout-->
-<!--                    android:visibility="gone"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="20dp"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:layout_marginRight="20dp"-->
-<!--                    android:layout_marginBottom="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="horizontal">-->
+                    <TextView
+                        android:id="@+id/textView_total_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginEnd="11dp"
+                        android:layout_marginRight="11dp"
+                        android:text="0:00"
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
 
-<!--
-
-<!                    <ImageView-->
-<!--                        android:id="@+id/imageView_sleep_expand"-->
-<!--                        android:layout_width="40dp"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:layout_gravity="end"-->
-<!--                        android:background="?attr/selectableItemBackground"-->
-<!--                        android:contentDescription="@string/image"-->
-<!--                        android:padding="7dp"-->
-<!--                        android:tint="@color/black"-->
-<!--                        android:src="@mipmap/sleep" />-->
-
-<!--                </LinearLayout>-->
-
+                    <androidx.appcompat.widget.AppCompatSeekBar
+                        android:id="@+id/seekbar_song"
+                        style="@style/AppThemeTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@id/textView_total_duration"
+                        android:layout_toRightOf="@id/textView_song_duration"
+                        android:progressTint="#565BD1"
+                        android:thumbTint="@color/main_color" />
+                </RelativeLayout>
             </LinearLayout>
 
         </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_song_seekbar"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="8dp">
-
-            <TextView
-                android:id="@+id/textView_song_duration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/seekbar_song"
-                android:layout_marginStart="11dp"
-                android:layout_marginLeft="11dp"
-                android:text="0:00"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/textView_total_duration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/seekbar_song"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="11dp"
-                android:layout_marginRight="11dp"
-                android:text="0:00"
-                android:textColor="@color/black" />
-
-            <androidx.appcompat.widget.AppCompatSeekBar
-                android:id="@+id/seekbar_song"
-                style="@style/AppThemeTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true" />
-
-        </RelativeLayout>
 
 
 
