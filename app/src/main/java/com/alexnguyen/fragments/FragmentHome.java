@@ -133,8 +133,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentCatHome f1 = new FragmentCatHome();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
-
+//                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
                 Bundle bundle = new Bundle();
                 bundle.putString("type", "featured");
                 f1.setArguments(bundle);
@@ -153,7 +152,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentCatHome f1 = new FragmentCatHome();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
+//                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
 
                 Bundle bundle = new Bundle();
                 bundle.putString("type", "trending");
@@ -173,7 +172,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentCatHome f1 = new FragmentCatHome();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
+//                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
 
                 Bundle bundle = new Bundle();
                 bundle.putString("type", "latest");
@@ -193,7 +192,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentCity f1 = new FragmentCity();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
+//                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
                 ft.add(R.id.frame_content_home, f1, getString(R.string.all_city));
                 ft.addToBackStack(getString(R.string.all_city));
                 ft.commit();
@@ -208,7 +207,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentAllRadio f1 = new FragmentAllRadio();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
+                //ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
                 ft.add(R.id.frame_content_home, f1, getString(R.string.all_radio));
                 ft.addToBackStack(getString(R.string.all_radio));
                 ft.commit();
@@ -224,7 +223,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentLanguage f1 = new FragmentLanguage();
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
+//                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
                 ft.add(R.id.frame_content_home, f1, getString(R.string.all_language));
                 ft.addToBackStack(getString(R.string.all_language));
                 ft.commit();
