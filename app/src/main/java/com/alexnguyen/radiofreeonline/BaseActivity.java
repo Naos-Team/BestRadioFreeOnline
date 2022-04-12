@@ -43,6 +43,7 @@ import android.widget.Toast;
 import com.alexnguyen.adapter.AdapterSuggest;
 import com.alexnguyen.interfaces.AdConsentListener;
 import com.alexnguyen.interfaces.BackInterAdListener;
+import com.alexnguyen.interfaces.CityClickListener;
 import com.alexnguyen.interfaces.DemandListener;
 import com.alexnguyen.item.ItemOnDemandCat;
 import com.alexnguyen.utils.RecyclerItemClickListener;
@@ -623,20 +624,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 loadFrag(f1, getResources().getString(R.string.home), fm);
                 break;
             case R.id.nav_ondemand:
-                FragmentOnDemandCat f2 = new FragmentOnDemandCat(new DemandListener() {
-                    @Override
-                    public void onCreateView_demand() {
-                        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) toolbar.getLayoutParams();
-                        params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL);
-                        params.setMargins(0, 35, 0 ,0);
-                    }
-
-                    @Override
-                    public void onDestroyView_demand() {
-                        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) toolbar.getLayoutParams();
-                        params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
-                    }
-                });
+                FragmentOnDemandCat f2 = new FragmentOnDemandCat();
                 loadFrag(f2, getResources().getString(R.string.on_demand), fm);
                 break;
             case R.id.nav_featured:
@@ -696,6 +684,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction ft = fm.beginTransaction();
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.replace(R.id.content_frame_activity, f1, name);
+        ft.addToBackStack(name);
         ft.commit();
         getSupportActionBar().setTitle(name);
     }
@@ -786,7 +775,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(int position, String type) {
                 int pos = getPosition(adapterSuggest.getID(position), arrayList_random);
                 FragmentManager fm = getSupportFragmentManager();
-                FragmentOnDemandDetails f1 = new FragmentOnDemandDetails();
+                FragmentOnDemandDetails f1 = new FragmentOnDemandDetails(true);
                 FragmentTransaction ft = fm.beginTransaction();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("item", arrayList_random.get(pos));
@@ -796,7 +785,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 ft.add(R.id.content_frame_activity, f1, arrayList_random.get(pos).getName());
                 ft.addToBackStack(arrayList_random.get(pos).getName());
                 ft.commit();
-                getSupportActionBar().setTitle(arrayList_random.get(pos).getName());
 
                 slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 sliding_layout_main.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);

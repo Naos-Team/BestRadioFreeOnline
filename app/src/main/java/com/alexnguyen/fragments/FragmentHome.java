@@ -529,7 +529,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(int position, String type) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentOnDemandDetails f1 = new FragmentOnDemandDetails();
+                FragmentOnDemandDetails f1 = new FragmentOnDemandDetails(false);
                 FragmentTransaction ft = fm.beginTransaction();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("item", arrayList_ondemandcat.get(position));
@@ -538,7 +538,6 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                 ft.add(R.id.content_frame_activity, f1, arrayList_ondemandcat.get(position).getName());
                 ft.addToBackStack(arrayList_ondemandcat.get(position).getName());
                 ft.commit();
-                ((BaseActivity) getActivity()).getSupportActionBar().setTitle(arrayList_ondemandcat.get(position).getName());
             }
         };
 

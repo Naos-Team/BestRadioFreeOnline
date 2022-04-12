@@ -9,10 +9,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alexnguyen.interfaces.CityClickListener;
+import com.alexnguyen.interfaces.OnDemandCatListener;
+import com.alexnguyen.radiofreeonline.BaseActivity;
 import com.jgabrielfreitas.core.BlurImageView;
 import com.squareup.picasso.Picasso;
 import com.alexnguyen.adapter.AdapterOnDemand;
@@ -56,10 +60,18 @@ public class FragmentOnDemandDetails extends Fragment {
     private String errr_msg;
     private SharedPref sharedPref;
     private Methods methods;
+    private ImageView btn_back;
+    private static boolean some_stack;
+
+    public FragmentOnDemandDetails(boolean some_stack) {
+        this.some_stack = some_stack;
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_ondemand, container, false);
+
+        ((BaseActivity) getActivity()).getSupportActionBar().hide();
 
         itemOnDemandCat = (ItemOnDemandCat) getArguments().getSerializable("item");
 
@@ -71,6 +83,7 @@ public class FragmentOnDemandDetails extends Fragment {
         imageView_blur = rootView.findViewById(R.id.imageview_ondemand_blur);
         textView_name_ondemand = rootView.findViewById(R.id.tview_name_ondemand);
         progressBar = rootView.findViewById(R.id.progressBar_on);
+        btn_back = rootView.findViewById(R.id.btn_back_Ondemand_Frag);
 
         ll_empty = rootView.findViewById(R.id.ll_empty);
         textView_empty = rootView.findViewById(R.id.textView_empty_msg);
@@ -100,6 +113,20 @@ public class FragmentOnDemandDetails extends Fragment {
             @Override
             public void onClick(View v) {
                 loadOnDemand();
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(some_stack){
+                    for (int i = 2; i < getActivity().getSupportFragmentManager().getBackStackEntryCount(); i++){
+                        getActivity().getSupportFragmentManager().popBackStack();
+                    }
+                } else {
+
+                    getActivity().getSupportFragmentManager().popBackStack();
+                }
             }
         });
 
@@ -196,5 +223,11 @@ public class FragmentOnDemandDetails extends Fragment {
             recyclerView.setVisibility(View.GONE);
             ll_empty.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ((BaseActivity) getActivity()).getSupportActionBar().show();
     }
 }

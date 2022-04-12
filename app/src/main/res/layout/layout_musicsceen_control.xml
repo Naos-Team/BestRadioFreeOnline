@@ -50,6 +50,10 @@
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
                             android:maxLines="2"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMaxTextSize="22dp"
+                            android:autoSizeMinTextSize="18dp"
+                            android:autoSizeStepGranularity="2dp"
                             android:text="Name"
                             android:textColor="@color/white"
                             android:textSize="21dp" />

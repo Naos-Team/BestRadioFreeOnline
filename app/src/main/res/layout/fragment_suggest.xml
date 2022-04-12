@@ -21,7 +21,7 @@
             android:textSize="14sp" />
 
         <androidx.cardview.widget.CardView
-            android:layout_width="390dp"
+            android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -32,7 +32,7 @@
             <EditText
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/editText_sug_title"
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:hint="@string/song_title"
@@ -53,7 +53,7 @@
             android:textSize="14sp" />
 
         <androidx.cardview.widget.CardView
-            android:layout_width="390dp"
+            android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -64,7 +64,7 @@
             <EditText
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/editText_sug_desc"
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:gravity="top"
@@ -79,7 +79,7 @@
 
         <androidx.cardview.widget.CardView
             app:cardCornerRadius="30dp"
-            android:layout_width="390dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
@@ -87,8 +87,8 @@
             app:cardElevation="10dp">
 
             <LinearLayout
-                android:layout_width="366dp"
-                android:layout_height="174dp"
+                android:layout_width="match_parent"
+                android:layout_height="178dp"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -105,10 +105,10 @@
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/imageView_sug"
                     android:layout_width="100dp"
-                    android:maxWidth="350dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
+                    android:maxWidth="350dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder_upload"
                     app:riv_corner_radius="5dp" />
