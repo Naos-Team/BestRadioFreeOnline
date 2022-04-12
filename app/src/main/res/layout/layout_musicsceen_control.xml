@@ -26,6 +26,7 @@
                     android:id="@+id/iv_thumb_scene2"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
+                    android:scaleType="centerCrop"
                     android:src="@color/black20"
                     app:riv_corner_radius="25dp" />
 

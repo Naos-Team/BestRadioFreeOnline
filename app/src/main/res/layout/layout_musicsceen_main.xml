@@ -56,8 +56,8 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:visibility="visible"
-                    app:riv_border_color="#3396D3"
-                    app:riv_border_width="1dp"
+                    app:riv_border_color="#0277BD"
+                    app:riv_border_width="2dp"
                     app:riv_mutate_background="false"
                     app:riv_oval="true"
                     tools:targetApi="lollipop" />
