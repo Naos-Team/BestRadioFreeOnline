@@ -52,11 +52,6 @@ public class FragmentOnDemandCat extends Fragment {
     private String errr_msg;
     SharedPref sharedPref;
     Methods methods;
-    private DemandListener listener;
-
-    public FragmentOnDemandCat(DemandListener listener) {
-        this.listener = listener;
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -91,7 +86,6 @@ public class FragmentOnDemandCat extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                listener.onCreateView_demand();
                 methods.showInter(position, "");
             }
         }));
@@ -193,7 +187,7 @@ public class FragmentOnDemandCat extends Fragment {
         public void onClick(int position, String type) {
             int pos = getPosition(adapter.getID(position));
             FragmentManager fm = getFragmentManager();
-            FragmentOnDemandDetails f1 = new FragmentOnDemandDetails();
+            FragmentOnDemandDetails f1 = new FragmentOnDemandDetails(false);
             FragmentTransaction ft = fm.beginTransaction();
             Bundle bundle = new Bundle();
             bundle.putSerializable("item", arraylist.get(pos));
@@ -203,7 +197,6 @@ public class FragmentOnDemandCat extends Fragment {
             ft.add(R.id.content_frame_activity, f1, arraylist.get(pos).getName());
             ft.addToBackStack(arraylist.get(pos).getName());
             ft.commit();
-            ((BaseActivity) getActivity()).getSupportActionBar().setTitle(arraylist.get(pos).getName());
         }
     };
 
@@ -216,11 +209,5 @@ public class FragmentOnDemandCat extends Fragment {
             }
         }
         return count;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        listener.onDestroyView_demand();
     }
 }

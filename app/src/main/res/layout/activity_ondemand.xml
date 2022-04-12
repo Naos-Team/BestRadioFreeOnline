@@ -16,7 +16,7 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-            <ImageView
+        <ImageView
                 android:id="@+id/imageview_ondemand_blur"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -37,6 +37,13 @@
                 android:orientation="vertical"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp">
+
+                <include
+                    layout="@layout/layout_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="65dp"
+                    android:visibility="gone" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -75,9 +82,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginLeft="25dp"
+                            android:layout_marginLeft="15dp"
                             android:layout_marginTop="25dp"
-                            android:layout_marginRight="20dp" />
+                            android:layout_marginRight="15dp" />
 
                         <fr.castorflex.android.circularprogressbar.CircularProgressBar
                             android:id="@+id/progressBar_on"
@@ -93,15 +100,21 @@
                             app:cpb_sweep_speed="1.0" />
                     </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/btn_back_Ondemand_Frag"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.02"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.04000002"
+            app:layout_constraintWidth_percent="0.1"
+            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <include
-            layout="@layout/layout_empty"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="65dp"
-            android:layout_below="@+id/imageView_ondemand"
-            android:visibility="gone"/>
 
 </RelativeLayout>
