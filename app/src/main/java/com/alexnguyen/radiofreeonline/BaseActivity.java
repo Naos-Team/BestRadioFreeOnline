@@ -42,8 +42,10 @@ import com.alexnguyen.adapter.AdapterSuggest;
 import com.alexnguyen.fragments.FragmentExitDialog;
 import com.alexnguyen.interfaces.BackInterAdListener;
 import com.alexnguyen.interfaces.CityClickListener;
+import com.alexnguyen.interfaces.DemandListener;
 import com.alexnguyen.item.ItemOnDemandCat;
 import com.alexnguyen.utils.RecyclerItemClickListener;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -611,7 +613,20 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 loadFrag(f1, getResources().getString(R.string.home), fm);
                 break;
             case R.id.nav_ondemand:
-                FragmentOnDemandCat f2 = new FragmentOnDemandCat();
+                FragmentOnDemandCat f2 = new FragmentOnDemandCat(new DemandListener() {
+                    @Override
+                    public void onCreateView_demand() {
+                        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) toolbar.getLayoutParams();
+                        params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL);
+                        params.setMargins(0, 35, 0 ,0);
+                    }
+
+                    @Override
+                    public void onDestroyView_demand() {
+                        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) toolbar.getLayoutParams();
+                        params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
+                    }
+                });
                 loadFrag(f2, getResources().getString(R.string.on_demand), fm);
                 break;
             case R.id.nav_featured:

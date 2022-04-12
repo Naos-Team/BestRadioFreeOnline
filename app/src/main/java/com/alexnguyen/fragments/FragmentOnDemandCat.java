@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.alexnguyen.adapter.AdapterOnDemandCat;
 import com.alexnguyen.asyncTasks.LoadOnDemandCat;
+import com.alexnguyen.interfaces.DemandListener;
 import com.alexnguyen.interfaces.InterAdListener;
 import com.alexnguyen.interfaces.OnDemandCatListener;
 import com.alexnguyen.item.ItemOnDemandCat;
@@ -51,6 +52,11 @@ public class FragmentOnDemandCat extends Fragment {
     private String errr_msg;
     SharedPref sharedPref;
     Methods methods;
+    private DemandListener listener;
+
+    public FragmentOnDemandCat(DemandListener listener) {
+        this.listener = listener;
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,6 +91,7 @@ public class FragmentOnDemandCat extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                listener.onCreateView_demand();
                 methods.showInter(position, "");
             }
         }));
@@ -209,5 +216,11 @@ public class FragmentOnDemandCat extends Fragment {
             }
         }
         return count;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        listener.onDestroyView_demand();
     }
 }
