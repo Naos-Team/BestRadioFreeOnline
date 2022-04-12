@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -26,10 +27,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
 import android.webkit.WebView;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -39,20 +40,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.alexnguyen.adapter.AdapterSuggest;
-import com.alexnguyen.fragments.FragmentExitDialog;
 import com.alexnguyen.interfaces.BackInterAdListener;
-import com.alexnguyen.interfaces.CityClickListener;
 import com.alexnguyen.interfaces.DemandListener;
 import com.alexnguyen.item.ItemOnDemandCat;
 import com.alexnguyen.utils.RecyclerItemClickListener;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar;
 import com.labo.kaji.relativepopupwindow.RelativePopupWindow;
 import com.makeramen.roundedimageview.RoundedImageView;
-import com.pkmmte.view.CircularImageView;
 import com.alexnguyen.asyncTasks.LoadAbout;
 import com.alexnguyen.asyncTasks.LoadRadioViewed;
 import com.alexnguyen.asyncTasks.LoadReport;
@@ -85,7 +82,6 @@ import com.warkiz.widget.IndicatorSeekBar;
 import com.warkiz.widget.OnSeekChangeListener;
 import com.warkiz.widget.SeekParams;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -107,8 +103,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.transition.Scene;
-import androidx.transition.TransitionManager;
 
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
@@ -940,6 +934,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void openQuitDialog() {
+        TextView txt_Exit_dialog, txtTitle_Exit_dialog;
+        Button btnCancel_Exit_dialog, btnexit_Exit_dialog;
 //        AlertDialog.Builder alert;
 //        alert = new AlertDialog.Builder(BaseActivity.this, R.style.Widget_MaterialComponents_MaterialCalendar_Day);
 //        alert.setTitle(R.string.app_name);
@@ -957,13 +953,40 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 //            }
 //        });
 //       alert.show();
-        FragmentExitDialog fragmentExitDialog = new FragmentExitDialog(new CityClickListener() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_dialog_exit_app);
+        Window window = dialog.getWindow();
+        if(window == null){
+            return;
+        }
+        txt_Exit_dialog = (TextView) dialog.findViewById(R.id.txt_Exit_dialog);
+        txtTitle_Exit_dialog = (TextView) dialog.findViewById(R.id.txtTitle_Exit_dialog);
+        btnCancel_Exit_dialog = (Button) dialog.findViewById(R.id.btnCancel_Exit_dialog);
+        btnexit_Exit_dialog = (Button) dialog.findViewById(R.id.btnexit_Exit_dialog);
+
+        txtTitle_Exit_dialog.setText("Confirm");
+        txt_Exit_dialog.setText(getString(R.string.sure_quit));
+        btnCancel_Exit_dialog.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick() {
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
+
+        btnexit_Exit_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });
-        fragmentExitDialog.show(getSupportFragmentManager(), "fragment");
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(true);
+        dialog.show();
     }
 
     private InterAdListener interAdListener = new InterAdListener() {
