@@ -308,16 +308,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:text="Maybe you like it"
             android:textColor="@color/black"
-            android:textSize="23dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_suggestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="100dp"
             android:layout_marginTop="10dp" />
 
     </LinearLayout>

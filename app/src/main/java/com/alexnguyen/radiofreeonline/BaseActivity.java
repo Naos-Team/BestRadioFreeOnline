@@ -38,8 +38,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alexnguyen.adapter.AdapterSuggest;
+import com.alexnguyen.interfaces.AdConsentListener;
 import com.alexnguyen.interfaces.BackInterAdListener;
 import com.alexnguyen.interfaces.DemandListener;
 import com.alexnguyen.item.ItemOnDemandCat;
@@ -142,9 +144,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     RelativeLayout btn_play_music, btn_previous_scene2, btn_next_scene2, btn_play_scene2;
     ImageView iv_play_music, iv_thumb_scene2, iv_play_scene2;
     CardView btn_report;
-    LinearLayout control_dragview, ll_suggest, ll_player_scene2;
+    LinearLayout control_dragview, ll_suggest, ll_player_scene2, ll_player_content;
     TextView tv_songname_scene2;
-
 
 
     double current_offset = 0;
@@ -232,6 +233,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         btn_previous_scene2 = findViewById(R.id.btn_previous_scene2);
         btn_next_scene2 = findViewById(R.id.btn_next_scene2);
         tv_songname_scene2 = findViewById(R.id.tv_songname_scene2);
+        ll_player_content = findViewById(R.id.ll_player_content);
 
 
         iv_play_music = findViewById(R.id.iv_play_music);
@@ -252,21 +254,26 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         ll_collapse_color = findViewById(R.id.ll_collapse_color);
         rl_expand = findViewById(R.id.ll_expand);
         rl_expand.setAlpha(0.0f);
-//        ll_ad = findViewById(R.id.ll_adView);
+        ll_ad = findViewById(R.id.ll_adView);
 
         setIfPlaying();
 
-//        adConsent = new AdConsent(this, new AdConsentListener() {
-//            @Override
-//            public void onConsentUpdate() {
-//                methods.showBannerAd(ll_ad);
-//            }
-//        });
+        adConsent = new AdConsent(this, new AdConsentListener() {
+            @Override
+            public void onConsentUpdate() {
+                methods.showBannerAd(ll_ad);
+
+                setUpContentSlideMain();
+            }
+        });
 
         if (methods.isConnectingToInternet()) {
             loadAboutData();
-        } else {
             adConsent.checkForConsent();
+        } else {
+
+            setUpContentSlideMain();
+
             dbHelper.getAbout();
             methods.showToast(getString(R.string.internet_not_connected));
         }
@@ -589,6 +596,15 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         FragmentMain f1 = new FragmentMain();
         loadFrag(f1, getResources().getString(R.string.home), fm);
         getSupportActionBar().setTitle(getString(R.string.home));
+    }
+
+    private void setUpContentSlideMain() {
+        int height = sliding_layout_main.getPanelHeight();
+
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) ll_player_content.getLayoutParams();
+        params.setMargins(0, 0, 0, height); //substitute parameters for left, top, right, bottom
+        ll_player_content.setLayoutParams(params);
+        
     }
 
 

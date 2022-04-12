@@ -27,11 +27,7 @@
                 android:layout_margin="5dp"
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"/>
-            <LinearLayout
-                android:id="@+id/ll_adView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -205,6 +201,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_adView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical" />
 
             <RelativeLayout
                 android:id="@+id/rl_language"

@@ -22,7 +22,7 @@
             app:umanoFadeColor="@android:color/transparent"
             app:umanoShadowHeight="0dp"
             sothree:umanoOverlay="true"
-            sothree:umanoPanelHeight="230dp">
+            sothree:umanoPanelHeight="100dp">
 
             <include
                 android:id="@+id/ll_musicsceen_main"
