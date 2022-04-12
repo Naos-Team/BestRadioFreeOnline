@@ -61,12 +61,12 @@
 
             <ImageView
                 android:id="@+id/imageView_fav_home"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:padding="5dp"
-                android:src="@mipmap/fav" />
+                android:src="@drawable/unfav" />
         </RelativeLayout>
 
 

@@ -128,9 +128,9 @@ public class AdapterRadioList extends RecyclerView.Adapter {
                 }
 
                 if (isFav) {
-                    myViewHolder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav_hover));
+                    myViewHolder.imageView_fav.setImageResource(R.drawable.fav);
                 } else {
-                    myViewHolder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav));
+                    myViewHolder.imageView_fav.setImageResource(R.drawable.unfav);
                 }
 
                 myViewHolder.textView_radio.setText(objAllBean.getRadioName());
@@ -145,10 +145,10 @@ public class AdapterRadioList extends RecyclerView.Adapter {
                     @Override
                     public void onClick(View view) {
                         if (dbHelper.addORremoveFav((ItemRadio) arrayList.get(holder.getAdapterPosition()))) {
-                            myViewHolder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav_hover));
+                            myViewHolder.imageView_fav.setImageResource(R.drawable.fav);
                             methods.showToast(context.getString(R.string.add_to_fav));
                         } else {
-                            myViewHolder.imageView_fav.setImageDrawable(context.getResources().getDrawable(R.mipmap.fav));
+                            myViewHolder.imageView_fav.setImageResource(R.drawable.unfav);
                             methods.showToast(context.getString(R.string.remove_from_fav));
                         }
                     }

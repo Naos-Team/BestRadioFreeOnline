@@ -89,9 +89,11 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:theme="@style/NavigationDrawer"
         app:headerLayout="@layout/nav_header_main"
+        app:itemTextColor="@color/nav_text"
         app:itemBackground="@drawable/bg_nav_view"
+        app:itemIconTint="@color/nav_text"
+        app:itemShapeAppearance="@style/CardView"
         app:menu="@menu/activity_main_drawer"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -519,10 +519,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 if (Constants.arrayList_radio.size() > 0) {
                     methods.showRateDialog();
                     if (dbHelper.addORremoveFav(Constants.arrayList_radio.get(Constants.pos))) {
-                        imageView_fav.setImageDrawable(getResources().getDrawable(R.mipmap.fav_hover_white));
+                        imageView_fav.setImageResource(R.drawable.fav);
                         methods.showToast(getString(R.string.add_to_fav));
                     } else {
-                        imageView_fav.setImageDrawable(getResources().getDrawable(R.mipmap.fav_white));
+                        imageView_fav.setImageResource(R.drawable.unfav);
                         methods.showToast(getString(R.string.remove_from_fav));
                     }
                 }
@@ -1152,7 +1152,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setBackground(methods.getGradientDrawableToolbar());
 //        fab_play_expand.setBackgroundTintList(ColorStateList.valueOf(sharedPref.getFirstColor()));
 //        ll_collapse_color.setBackground(methods.getGradientDrawableToolbar());
-        navigationView.setBackground(methods.getGradientDrawableToolbar());
+        //navigationView.setBackground(methods.getGradientDrawableToolbar());
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            seekbar_song.setThumbTintList(ColorStateList.valueOf(sharedPref.getFirstColor()));
@@ -1181,8 +1181,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         };
 
         ColorStateList ColorStateList1 = new ColorStateList(state, color);
-        navigationView.setItemTextColor(ColorStateList1);
-        navigationView.setItemIconTintList(ColorStateList1);
+        //navigationView.setItemTextColor(ColorStateList1);
+        //navigationView.setItemIconTintList(ColorStateList1);
     }
 
     @Override
