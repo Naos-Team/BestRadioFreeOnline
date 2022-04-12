@@ -1,5 +1,7 @@
 package com.alexnguyen.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,23 +13,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.alexnguyen.adapter.AdapterHomeCity;
 import com.alexnguyen.adapter.AdapterHomeLanguage;
+import com.alexnguyen.adapter.AdapterMoreApp;
 import com.alexnguyen.adapter.AdapterSlideOnDemand;
 import com.alexnguyen.asyncTasks.LoadCity;
 import com.alexnguyen.asyncTasks.LoadLanguage;
-import com.alexnguyen.asyncTasks.LoadOnDemandCat;
 import com.alexnguyen.interfaces.AdConsentListener;
 import com.alexnguyen.interfaces.CityClickListener;
 import com.alexnguyen.interfaces.CityListener;
 import com.alexnguyen.interfaces.InterAdListener;
 import com.alexnguyen.interfaces.LanguageListener;
-import com.alexnguyen.interfaces.OnDemandCatListener;
 import com.alexnguyen.item.ItemCity;
 import com.alexnguyen.item.ItemLanguage;
+import com.alexnguyen.item.ItemMoreApp;
 import com.alexnguyen.utils.AdConsent;
+import com.alexnguyen.utils.RecyclerItemClickListener;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.alexnguyen.adapter.AdapterRadioList;
@@ -68,12 +70,13 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
     private ArrayList<ItemCity> arrayList_radio_city;
     private ArrayList<ItemLanguage> arrayList_radio_language;
     private ArrayList<ItemOnDemandCat> arrayList_ondemandcat;
+    private ArrayList<ItemMoreApp> arrayList_moreapp;
     public static AdapterRadioList adapterRadioList, adapterRadioList_mostview, adapterRadioList_featured, adapterRadioList_all;
     public  AdapterSlideOnDemand adapterSlideOnDemand;
     private CircularProgressBar progressBar;
     private NestedScrollView scrollView;
     private ViewPager2 viewpager_slide;
-    private RecyclerView recyclerView, recyclerView_mostview, recyclerView_featured, recyclerView_city, recyclerView_language, recyclerView_all_radio;
+    private RecyclerView recyclerView, recyclerView_mostview, recyclerView_featured, recyclerView_city, recyclerView_language, recyclerView_all_radio, recyclerView_more_app;
     private LinearLayout ll_ad;
     private Boolean isLoaded = false, isVisible = false;
     private RelativeLayout rl_featured, rl_trending, rl_latest, rl_city, rl_language, rl_all_radio;
@@ -106,6 +109,13 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
         arrayList_radio_city = new ArrayList<>();
         arrayList_radio_language = new ArrayList<>();
         arrayList_ondemandcat = new ArrayList<>();
+        arrayList_moreapp = new ArrayList<>();
+        arrayList_moreapp.add(new ItemMoreApp(0, "Telegram0", "https://play.google.com/store/apps/details?id=org.telegram.messenger", "https://play-lh.googleusercontent.com/ZU9cSsyIJZo6Oy7HTHiEPwZg0m2Crep-d5ZrfajqtsH-qgUXSqKpNA2FpPDTn-7qA5Q=s180-rw"));
+        arrayList_moreapp.add(new ItemMoreApp(1, "Telegram1", "https://play.google.com/store/apps/details?id=org.telegram.messenger", "https://play-lh.googleusercontent.com/ZU9cSsyIJZo6Oy7HTHiEPwZg0m2Crep-d5ZrfajqtsH-qgUXSqKpNA2FpPDTn-7qA5Q=s180-rw"));
+        arrayList_moreapp.add(new ItemMoreApp(2, "Telegram2", "https://play.google.com/store/apps/details?id=org.telegram.messenger", "https://play-lh.googleusercontent.com/ZU9cSsyIJZo6Oy7HTHiEPwZg0m2Crep-d5ZrfajqtsH-qgUXSqKpNA2FpPDTn-7qA5Q=s180-rw"));
+        arrayList_moreapp.add(new ItemMoreApp(3, "Telegram3", "https://play.google.com/store/apps/details?id=org.telegram.messenger", "https://play-lh.googleusercontent.com/ZU9cSsyIJZo6Oy7HTHiEPwZg0m2Crep-d5ZrfajqtsH-qgUXSqKpNA2FpPDTn-7qA5Q=s180-rw"));
+        arrayList_moreapp.add(new ItemMoreApp(4, "Telegram4", "https://play.google.com/store/apps/details?id=org.telegram.messenger", "https://play-lh.googleusercontent.com/ZU9cSsyIJZo6Oy7HTHiEPwZg0m2Crep-d5ZrfajqtsH-qgUXSqKpNA2FpPDTn-7qA5Q=s180-rw"));
+
 
         ll_ad = rootView.findViewById(R.id.ll_adView);
 
@@ -258,10 +268,15 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
         recyclerView_language.setLayoutManager(ll_lan);
         recyclerView_language.setHasFixedSize(true);
 
+        recyclerView_more_app = rootView.findViewById(R.id.recyclerView_more_app);
+        recyclerView_more_app.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView_more_app.setHasFixedSize(true);
+
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView_mostview.setNestedScrollingEnabled(false);
         recyclerView_featured.setNestedScrollingEnabled(false);
         recyclerView_city.setNestedScrollingEnabled(false);
+        recyclerView_more_app.setNestedScrollingEnabled(false);
 
 //        if (isVisible && !isLoaded) {
 //            loadList();
@@ -375,6 +390,14 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                             adConsent.checkForConsent();
 
                             ((BaseActivity) getContext()).LoadDemandList(arrayList_ondemandcat);
+
+                            recyclerView_more_app.setAdapter(new AdapterMoreApp(arrayList_moreapp));
+                            recyclerView_more_app.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(View view, int position) {
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(arrayList_moreapp.get(position).getUrl())));
+                                }
+                            }));
 
                             loadCity();
                             loadAllRadio();

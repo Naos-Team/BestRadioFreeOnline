@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Best_Radio_Free_Online.iml" filepath="$PROJECT_DIR$/.idea/modules/Best_Radio_Free_Online.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Best_Radio_Free_Online.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Best_Radio_Free_Online.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/checkbox/Best_Radio_Free_Online.checkbox.iml" filepath="$PROJECT_DIR$/.idea/modules/checkbox/Best_Radio_Free_Online.checkbox.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nativetemplates/Best_Radio_Free_Online.nativetemplates.iml" filepath="$PROJECT_DIR$/.idea/modules/nativetemplates/Best_Radio_Free_Online.nativetemplates.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/slider/Best_Radio_Free_Online.slider.iml" filepath="$PROJECT_DIR$/.idea/modules/slider/Best_Radio_Free_Online.slider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Radio.iml" filepath="$PROJECT_DIR$/.idea/modules/Radio.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Radio.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Radio.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/checkbox/Radio.checkbox.iml" filepath="$PROJECT_DIR$/.idea/modules/checkbox/Radio.checkbox.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nativetemplates/Radio.nativetemplates.iml" filepath="$PROJECT_DIR$/.idea/modules/nativetemplates/Radio.nativetemplates.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/slider/Radio.slider.iml" filepath="$PROJECT_DIR$/.idea/modules/slider/Radio.slider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Best-Radio-Free-Online.iml" filepath="$PROJECT_DIR$/.idea/modules/Best-Radio-Free-Online.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Best-Radio-Free-Online.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Best-Radio-Free-Online.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/checkbox/Best-Radio-Free-Online.checkbox.iml" filepath="$PROJECT_DIR$/.idea/modules/checkbox/Best-Radio-Free-Online.checkbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nativetemplates/Best-Radio-Free-Online.nativetemplates.iml" filepath="$PROJECT_DIR$/.idea/modules/nativetemplates/Best-Radio-Free-Online.nativetemplates.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/slider/Best-Radio-Free-Online.slider.iml" filepath="$PROJECT_DIR$/.idea/modules/slider/Best-Radio-Free-Online.slider.iml" />
     </modules>
   </component>
 </project>
