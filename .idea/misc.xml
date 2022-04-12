@@ -47,7 +47,7 @@
         <entry key="..\:/Work/Radio/app/src/main/res/layout/item_demand_control.xml" value="0.234375" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_citylist.xml" value="0.1703125" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_cityradio_list.xml" value="0.264" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_cityradio_list1.xml" value="0.152" />
+        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_cityradio_list1.xml" value="0.264" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_dailog_selecttime.xml" value="0.15625" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_dailog_time.xml" value="0.228125" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_desc.xml" value="0.6" />
@@ -55,6 +55,7 @@
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_empty.xml" value="0.25" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_languagelist.xml" value="0.4" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_musicsceen_control.xml" value="0.234375" />
+        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_musicsceen_control_scene2.xml" value="0.19895833333333332" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_musicsceen_main.xml" value="0.234375" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_musicscreen.xml" value="0.15625" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_noti_small.xml" value="0.228125" />

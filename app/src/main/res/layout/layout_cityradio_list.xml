@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="7dp"
-    android:layout_marginRight="7dp"
     android:layout_marginBottom="35dp"
     android:background="@null"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:weightSum="10">
 
 
     <LinearLayout
@@ -22,8 +22,8 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/row_logo"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:layout_above="@+id/textView_radio_name"
             android:scaleType="centerCrop"
             android:src="@drawable/demo_item"
@@ -87,26 +87,18 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginLeft="50dp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
         <TextView
+            android:layout_weight="10"
+            android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:id="@+id/textView_list_lang"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
+            android:layout_marginRight="10dp"
             android:hint="Text"
             android:maxLines="1"
             android:textSize="13dp" />
 
-
-    </LinearLayout>
 
 </LinearLayout >

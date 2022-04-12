@@ -23,8 +23,8 @@
         android:id="@+id/recyclerView_theme"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar_theme"
-        android:layout_above="@+id/ll_adView_theme"/>
+        android:layout_above="@+id/ll_adView_theme"
+        android:layout_below="@+id/toolbar_theme" />
 
     <TextView
         android:id="@+id/textView_empty_theme"
