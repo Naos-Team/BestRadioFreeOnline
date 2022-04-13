@@ -69,10 +69,16 @@ public class AdapterCityDetails extends RecyclerView.Adapter<AdapterCityDetails.
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_cityradio_list1, parent, false);
-
-        return new MyViewHolder(itemView);
+        View itemView;
+        try{
+             itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.layout_cityradio_list1, parent, false);
+            return new MyViewHolder(itemView);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @Override

@@ -19,12 +19,13 @@
         android:layout_height="match_parent"
         android:padding="2dp">
 
+
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/row_logo1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:elevation="20dp"
-            android:padding="2.5dp"
+            android:padding="5dp"
             android:scaleType="centerCrop"
             android:src="@drawable/demo_item"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
@@ -35,8 +36,7 @@
             app:layout_constraintVertical_weight="11"
             app:riv_corner_radius_top_left="20dp"
             app:riv_corner_radius_top_right="20dp"
-            tools:ignore="MissingConstraints" />
-
+            />
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -55,7 +55,7 @@
                 android:id="@+id/textView_radio_name1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="9"
+                android:layout_weight="8"
                 android:ellipsize="end"
                 android:gravity="bottom"
                 android:maxLines="1"
@@ -67,10 +67,8 @@
                 android:id="@+id/imageView_fav"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingLeft="3dp"
-                android:paddingTop="5dp"
-                android:paddingRight="3dp"
+                android:layout_weight="2"
+
                 android:src="@drawable/unfav" />
 
 

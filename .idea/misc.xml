@@ -68,14 +68,16 @@
         <entry key="..\:/Work/Radio/app/src/main/res/drawable/ic_baseline_keyboard_arrow_left_24.xml" value="0.249" />
         <entry key="..\:/Work/Radio/app/src/main/res/drawable/menu_back.xml" value="0.1" />
         <entry key="..\:/Work/Radio/app/src/main/res/drawable/nav_item_padding.xml" value="0.1" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_base.xml" value="0.152" />
+        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_base.xml" value="0.1" />
+        <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_city_detail.xml" value="0.11382113821138211" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_ondemand.xml" value="0.264" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_ondemand_cat.xml" value="0.2453125" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/activity_setting.xml" value="0.2453125" />
+        <entry key="..\:/Work/Radio/app/src/main/res/layout/fragment_cat.xml" value="0.1" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/fragment_suggest.xml" value="0.152" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/gnt_medium_template_view.xml" value="0.1515625" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_cityradio_list.xml" value="0.4" />
-        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_cityradio_list1.xml" value="0.536" />
+        <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_cityradio_list1.xml" value="0.264" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_empty.xml" value="0.1515625" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_musicsceen_control.xml" value="0.2453125" />
         <entry key="..\:/Work/Radio/app/src/main/res/layout/layout_musicsceen_control_scene2.xml" value="0.2453125" />
