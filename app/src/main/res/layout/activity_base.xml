@@ -91,8 +91,10 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:itemTextColor="@color/nav_text"
-        app:itemBackground="@drawable/bg_nav_view"
+        app:itemBackground="@drawable/nav_item_padding"
         app:itemIconTint="@color/nav_text"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:itemShapeAppearance="@style/CardView"
         app:menu="@menu/activity_main_drawer"/>
 
