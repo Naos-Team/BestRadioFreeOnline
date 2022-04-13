@@ -12,7 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:id="@+id/ll_player_scene2"
@@ -234,11 +234,11 @@
         android:id="@+id/ll_suggest"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-160dp"
+        android:layout_marginTop="-180dp"
         android:background="@drawable/drawable_round_musicscreen"
         android:orientation="vertical"
         android:paddingHorizontal="30dp"
-        android:paddingTop="20dp"
+        android:paddingTop="30dp"
         android:visibility="visible">
 
         <LinearLayout
@@ -278,6 +278,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:id="@+id/btn_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

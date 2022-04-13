@@ -30,6 +30,7 @@
             <TextView
                 android:id="@+id/textView_name"
                 android:layout_width="match_parent"
+                android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="3"

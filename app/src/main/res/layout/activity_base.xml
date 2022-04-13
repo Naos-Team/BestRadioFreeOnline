@@ -21,7 +21,7 @@
             android:gravity="bottom"
             sothree:umanoDragView="@+id/dragView"
             sothree:umanoOverlay="true"
-            sothree:umanoPanelHeight="95dp"
+            sothree:umanoPanelHeight="75dp"
             sothree:umanoScrollableView="@+id/list"
             sothree:umanoShadowHeight="4dp">
 

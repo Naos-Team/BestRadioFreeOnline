@@ -52,7 +52,7 @@
         <LinearLayout
             android:id="@+id/ll_collapse_color"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="65dp"
             android:layout_marginHorizontal="0dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/shape_player_collapse"
@@ -60,8 +60,8 @@
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/imageView_player"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 app:riv_corner_radius="90dp" />
@@ -86,7 +86,7 @@
                     android:maxLines="1"
                     android:text="@string/no_fm"
                     android:textColor="@android:color/white"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
