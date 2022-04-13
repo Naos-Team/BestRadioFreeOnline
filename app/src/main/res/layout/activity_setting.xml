@@ -233,6 +233,7 @@
                 android:background="#40000000" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/textView_theme"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
