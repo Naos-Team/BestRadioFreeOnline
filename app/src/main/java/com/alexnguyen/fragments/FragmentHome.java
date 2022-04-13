@@ -701,7 +701,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                     FragmentTransaction ft = fm.beginTransaction();
 
                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
+                    //ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
                     ft.add(R.id.frame_content_home, f1, Constants.itemCity.getName());
                     ft.addToBackStack(Constants.itemCity.getName());
                     ft.commit();
@@ -765,7 +765,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                     FragmentTransaction ft = fm.beginTransaction();
 
                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
+                    //ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
                     ft.add(R.id.content_frame_activity, f1, Constants.itemLanguage.getName());
                     ft.addToBackStack(Constants.itemLanguage.getName());
                     ft.commit();
