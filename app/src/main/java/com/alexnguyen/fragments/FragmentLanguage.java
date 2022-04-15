@@ -164,6 +164,7 @@ public class FragmentLanguage extends Fragment {
         setEmpty();
     }
 
+
     private void setEmpty() {
         progressBar.setVisibility(View.GONE);
         if (arrayList.size() > 0) {
@@ -182,10 +183,11 @@ public class FragmentLanguage extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        menu.clear();
         inflater.inflate(R.menu.menu_search, menu);
 
         MenuItem item = menu.findItem(R.id.search);
-        MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+        //MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
 
         searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();

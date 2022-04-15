@@ -1208,7 +1208,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (slidingPanel.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
             slidingPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         } else if (fm.getBackStackEntryCount() != 2) {
-            getSupportActionBar().setTitle(fm.getFragments().get(fm.getBackStackEntryCount() - 1).getTag());
+            getSupportActionBar().setTitle(fm.getFragments().get(fm.getBackStackEntryCount() - 2).getTag());
             methodsBack.showInter(999, "BackPress");
         } else {
             openQuitDialog();

@@ -531,7 +531,7 @@ public class FragmentHome extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentTransaction ft = fm.beginTransaction();
 
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
+                //ft.hide(getFragmentManager().getFragments().get(getFragmentManager().getBackStackEntryCount()));
                 ft.add(R.id.content_frame_activity, f1, getString(R.string.menu_search));
                 ft.addToBackStack(getString(R.string.menu_search));
                 ft.commit();

@@ -138,8 +138,8 @@ public class FragmentAllRadio extends Fragment {
         menu.clear();
         inflater.inflate(R.menu.menu_search, menu);
 
-        MenuItem item = menu.findItem(R.id.search);
-        MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+//        MenuItem item = menu.findItem(R.id.search);
+//        MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
 
         searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setOnQueryTextListener(queryTextListener);
