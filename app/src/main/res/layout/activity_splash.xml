@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:background="@drawable/splash_shadow"
     android:orientation="vertical"
-    tools:context="radioentertainment.radiofreeonline.SplashActivity">
+    tools:context="com.radioentertainment.radio.SplashActivity">
 
 
     <ImageView

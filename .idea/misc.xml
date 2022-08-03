@@ -77,8 +77,17 @@
         <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/drawable/bg_purchase.xml" value="0.255" />
         <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/drawable/drawable_round_musicscreen.xml" value="0.1855" />
         <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/drawable/ic_arrow_back.xml" value="0.255" />
+        <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_about.xml" value="0.16354166666666667" />
         <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_base.xml" value="0.3145833333333333" />
+        <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_forgotpass.xml" value="0.16354166666666667" />
+        <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_login.xml" value="0.16354166666666667" />
+        <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_profile.xml" value="0.16354166666666667" />
+        <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_profile_edit.xml" value="0.16354166666666667" />
         <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_purchase.xml" value="0.3145833333333333" />
+        <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_register.xml" value="0.16354166666666667" />
+        <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_setting.xml" value="0.16354166666666667" />
+        <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_splash.xml" value="0.16354166666666667" />
+        <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/activity_theme.xml" value="0.16354166666666667" />
         <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/layout_musicsceen_control.xml" value="0.22083333333333333" />
         <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/layout_musicsceen_main.xml" value="0.33" />
         <entry key="..\:/WORK/Android Project/RadioOnline/app/src/main/res/layout/layout_musicscreen.xml" value="0.22083333333333333" />

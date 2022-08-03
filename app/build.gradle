@@ -26,6 +26,10 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes.each{
         it.buildConfigField 'String', 'SERVER_URL', SERVER_URL
         it.buildConfigField 'String', 'API_KEY', API_KEY
@@ -39,7 +43,8 @@ dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testImplementation 'junit:junit:4.12'
+    androidTestImplementation "androidx.test:core:1.4.0"
+    testImplementation 'junit:junit:4.13.2'
     implementation project(path: ':slider')
     implementation project(path: ':checkbox')
     implementation "com.android.billingclient:billing:5.0.0"
