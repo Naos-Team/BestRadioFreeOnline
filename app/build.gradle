@@ -6,8 +6,8 @@ android {
         applicationId "com.radioentertainment.radio"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 5
-        versionName "2.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [onesignal_app_id : "140aebc0-1c26-4b26-97f4-cbd10842e5f1",
