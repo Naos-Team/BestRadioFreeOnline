@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:src="@drawable/bg_shadow2"/>
 
-    <com.alexnguyen.utils.StatusBarView
+    <radioentertainment.utils.StatusBarView
         android:id="@+id/statusBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

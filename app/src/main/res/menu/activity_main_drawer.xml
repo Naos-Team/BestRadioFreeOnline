@@ -8,6 +8,12 @@
             android:title="@string/home" />
 
         <item
+            android:id="@+id/nav_premium"
+            android:icon="@drawable/ic_premium"
+            android:title="Get Premium"
+            android:visible="true"/>
+
+        <item
             android:id="@+id/nav_ondemand"
             android:icon="@mipmap/radio"
             android:title="@string/on_demand"

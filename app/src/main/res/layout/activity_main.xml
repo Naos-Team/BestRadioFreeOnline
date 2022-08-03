@@ -10,12 +10,12 @@
         android:id="@+id/frame_content_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.alexnguyen.radiofreeonline.com.vpapps.fragments.FragmentMain" />
+        tools:context="radioentertainment.radiofreeonline.com.vpapps.fragments.FragmentMain" />
 
 <!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
-<!--        tools:context="com.alexnguyen.radiofreeonline.com.vpapps.fragments.FragmentMain">-->
+<!--        tools:context="radioentertainmenttainment.radio.com.vpapps.fragments.FragmentMain">-->
 
 <!--        <com.google.android.material.appbar.AppBarLayout-->
 <!--            android:id="@+id/appBar"-->

@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/AppTheme.AppBarOverlay">
 
-                    <com.alexnguyen.utils.StatusBarView
+                    <radioentertainment.utils.StatusBarView
                         android:id="@+id/statusBar"
                         app:layout_scrollFlags="scroll"
                         android:layout_width="match_parent"

@@ -3,14 +3,14 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "com.alexnguyen.radiofreeonline"
+        applicationId "com.radioentertainment.radio"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 5
         versionName "2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders = [onesignal_app_id : "4aaccb1c-0c22-4ae6-9f12-bcdbb6ba5949",
+        manifestPlaceholders = [onesignal_app_id : "140aebc0-1c26-4b26-97f4-cbd10842e5f1",
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "REMOTE"]
         multiDexEnabled true
@@ -24,6 +24,9 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        viewBinding true
     }
     buildTypes.each{
         it.buildConfigField 'String', 'SERVER_URL', SERVER_URL
@@ -41,6 +44,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation project(path: ':slider')
     implementation project(path: ':checkbox')
+    implementation "com.android.billingclient:billing:5.0.0"
     implementation 'androidx.appcompat:appcompat:1.4.0-alpha02'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.3.0'

@@ -6,7 +6,7 @@
     android:background="@drawable/bg"
     android:gravity="center_vertical">
 
-    <com.alexnguyen.utils.StatusBarView
+    <radioentertainment.utils.StatusBarView
         android:id="@+id/statusBar_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

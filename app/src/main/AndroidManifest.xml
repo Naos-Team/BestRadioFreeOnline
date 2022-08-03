@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.alexnguyen.radiofreeonline"
+    package="com.radioentertainment.radio"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:name="com.alexnguyen.radiofreeonline.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
@@ -24,7 +24,7 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory" android:appComponentFactory="@string/app_name">
 
-        <activity android:name="com.alexnguyen.radiofreeonline.SplashActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -32,23 +32,24 @@
         </activity>
 
         <activity
-            android:name="com.alexnguyen.radiofreeonline.BaseActivity"
+            android:name=".BaseActivity"
             android:windowSoftInputMode="adjustNothing"/>
 
-        <activity android:name="com.alexnguyen.radiofreeonline.AboutActivity"/>
-        <activity android:name="com.alexnguyen.radiofreeonline.SettingActivity"/>
-        <activity android:name="com.alexnguyen.radiofreeonline.LoginActivity"/>
-        <activity android:name="com.alexnguyen.radiofreeonline.RegisterActivity"/>
-        <activity android:name="com.alexnguyen.radiofreeonline.ForgotPasswordActivity"/>
-        <activity android:name="com.alexnguyen.radiofreeonline.ProfileActivity"/>
-        <activity android:name="com.alexnguyen.radiofreeonline.ProfileEditActivity"/>
-        <activity android:name="com.alexnguyen.radiofreeonline.ThemeActivity"/>
+        <activity android:name=".PurchaseActivity"/>
+        <activity android:name=".AboutActivity"/>
+        <activity android:name=".SettingActivity"/>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".ForgotPasswordActivity"/>
+        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".ProfileEditActivity"/>
+        <activity android:name=".ThemeActivity"/>
 
-        <service android:name="com.alexnguyen.radiofreeonline.PlayService"
+        <service android:name=".PlayService"
             android:exported="false"/>
 
         <service
-            android:name="com.alexnguyen.utils.NotificationExtenderExample"
+            android:name="com.radioentertainment.utils.NotificationExtenderExample"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>
@@ -73,11 +74,11 @@
             android:value="@string/description"/>
 
         <receiver
-            android:name="com.alexnguyen.utils.SleepTimeReceiver"
+            android:name="com.radioentertainment.utils.SleepTimeReceiver"
             android:enabled="true"
             android:exported="true" />
 
-        <receiver android:name="com.alexnguyen.utils.MediaButtonIntentReceiver">
+        <receiver android:name="com.radioentertainment.utils.MediaButtonIntentReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>

@@ -83,7 +83,7 @@
                 </RelativeLayout>
 
 
-                <com.alexnguyen.utils.TemplateView
+                <radioentertainment.utils.TemplateView
                     android:id="@+id/my_template_native_ads"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
