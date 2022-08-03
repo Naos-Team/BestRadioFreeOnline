@@ -31,7 +31,7 @@
                 android:layout_height="match_parent" />
 
             <include
-                android:id="@+id/ll_musicsceen_main"
+                android:id="@+id/ll_musicsceen_control"
                 layout="@layout/layout_musicsceen_control"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

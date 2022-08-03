@@ -620,7 +620,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 loadFrag(f1, getResources().getString(R.string.home), fm);
                 break;
             case R.id.nav_premium:
-                startActivity();
+                startActivity(new Intent(BaseActivity.this, PurchaseActivity.class));
                 break;
             case R.id.nav_ondemand:
                 FragmentOnDemandCat f2 = new FragmentOnDemandCat();
@@ -1009,10 +1009,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     };
 
     public void checkPer() {
-        if ((ContextCompat.checkSelfPermission(BaseActivity.this, "android.permission.WRITE_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED) || (ContextCompat.checkSelfPermission(BaseActivity.this, "android.permission.READ_PHONE_STATE") != PackageManager.PERMISSION_GRANTED)) {
+        if ((ContextCompat.checkSelfPermission(BaseActivity.this, "android.permission.WRITE_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED)) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE"}, 1);
+                requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}, 1);
             }
         }
     }

@@ -25,9 +25,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildFeatures {
-        viewBinding true
-    }
+
     buildTypes.each{
         it.buildConfigField 'String', 'SERVER_URL', SERVER_URL
         it.buildConfigField 'String', 'API_KEY', API_KEY

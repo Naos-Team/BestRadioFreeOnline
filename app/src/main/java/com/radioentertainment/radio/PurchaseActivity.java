@@ -3,11 +3,11 @@ package com.radioentertainment.radio;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.radioentertainment.radio.databinding.ActivityPurchaseBinding;
 import com.radioentertainment.utils.SharedPref;
 import com.android.billingclient.api.AcknowledgePurchaseParams;
 import com.android.billingclient.api.BillingClient;
@@ -27,9 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PurchaseActivity extends AppCompatActivity {
-    ActivityPurchaseBinding binding;
     BillingClient billingClient;
     SharedPref sharedPref;
+    ImageView ic_back, item1, item2, item3, iv_check1 ,iv_check2, iv_check3;
+    TextView tv_item1_title, tv_item1_price, tv_title;
+    TextView tv_item2_title, tv_item2_price;
+    TextView tv_item3_title, tv_item3_price;
 
     private final String ONE_MONTH_SUBS = "subs_monthly";
     private final String THREE_MONTHS_SUBS = "subs_3month";
@@ -40,17 +43,30 @@ public class PurchaseActivity extends AppCompatActivity {
         checkUserCurrentPurchase();
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityPurchaseBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        setContentView(R.layout.activity_purchase);
+
+        ic_back = findViewById(R.id.ic_back);
+        item1 = findViewById(R.id.item1);
+        item2 = findViewById(R.id.item2);
+        item3 = findViewById(R.id.item3);
+        iv_check1 = findViewById(R.id.iv_check1);
+        iv_check2 = findViewById(R.id.iv_check2);
+        iv_check3 = findViewById(R.id.iv_check3);
+        tv_item1_title = findViewById(R.id.tv_item1_title);
+        tv_item2_title = findViewById(R.id.tv_item2_title);
+        tv_item3_title = findViewById(R.id.tv_item3_title);
+        tv_item1_price = findViewById(R.id.tv_item1_price);
+        tv_item2_price = findViewById(R.id.tv_item2_price);
+        tv_item3_price = findViewById(R.id.tv_item3_price);
+        tv_title = findViewById(R.id.tv_title);
+
 
         sharedPref = new SharedPref(this);
 
-        binding.icBack.setOnClickListener(new View.OnClickListener() {
+        ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent returnIntent = new Intent();
@@ -129,11 +145,11 @@ public class PurchaseActivity extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             if (product_id.equals(ONE_MONTH_SUBS)) {
-                                                binding.ivCheck1.setVisibility(View.VISIBLE);
+                                                iv_check1.setVisibility(View.VISIBLE);
                                             } else if (product_id.equals(THREE_MONTHS_SUBS)) {
-                                                binding.ivCheck2.setVisibility(View.VISIBLE);
+                                                iv_check2.setVisibility(View.VISIBLE);
                                             } else if (product_id.equals(ONE_YEAR_SUBS)) {
-                                                binding.ivCheck3.setVisibility(View.VISIBLE);
+                                                iv_check3.setVisibility(View.VISIBLE);
                                             }
 
                                         }
@@ -159,15 +175,15 @@ public class PurchaseActivity extends AppCompatActivity {
     private void setPremiumUI(boolean isPremium) {
 
         if (isPremium) {
-            binding.tvTitle.setText("You are PREMIUM now \n Upgrade more?");
+            tv_title.setText("You are PREMIUM now \n Upgrade more?");
 //            binding.topImg.setImageDrawable(getResources().getDrawable(R.drawable.bg_art_premium));
         } else {
-            binding.tvTitle.setText("Get Premium With No Ads?");
+            tv_title.setText("Get Premium With No Ads?");
 //            binding.topImg.setImageDrawable(getResources().getDrawable(R.drawable.in_app_purchase_img));
 
-            binding.ivCheck1.setVisibility(View.GONE);
-            binding.ivCheck2.setVisibility(View.GONE);
-            binding.ivCheck3.setVisibility(View.GONE);
+            iv_check1.setVisibility(View.GONE);
+            iv_check2.setVisibility(View.GONE);
+            iv_check3.setVisibility(View.GONE);
         }
 
 
@@ -207,9 +223,9 @@ public class PurchaseActivity extends AppCompatActivity {
                             List<ProductDetails.SubscriptionOfferDetails> subDetails = productDetails.getSubscriptionOfferDetails();
 
                             if (subDetails != null) {
-                                binding.tvItem1Title.setText(productDetails.getDescription());
-                                binding.tvItem1Price.setText(subDetails.get(0).getPricingPhases().getPricingPhaseList().get(0).getFormattedPrice() + " /Month");
-                                binding.item1.setOnClickListener(v -> {
+                                tv_item1_title.setText(productDetails.getDescription());
+                                tv_item1_price.setText(subDetails.get(0).getPricingPhases().getPricingPhaseList().get(0).getFormattedPrice() + " /Month");
+                                item2.setOnClickListener(v -> {
                                     launchPurchaseFlow(productDetails);
                                 });
                             }
@@ -217,9 +233,9 @@ public class PurchaseActivity extends AppCompatActivity {
                             List<ProductDetails.SubscriptionOfferDetails> subDetails1 = productDetails.getSubscriptionOfferDetails();
 
                             if (subDetails1 != null) {
-                                binding.tvItem2Title.setText(productDetails.getDescription());
-                                binding.tvItem2Price.setText(subDetails1.get(0).getPricingPhases().getPricingPhaseList().get(0).getFormattedPrice() + " /3 Months");
-                                binding.item2.setOnClickListener(v -> {
+                                tv_item2_title.setText(productDetails.getDescription());
+                                tv_item2_price.setText(subDetails1.get(0).getPricingPhases().getPricingPhaseList().get(0).getFormattedPrice() + " /3 Months");
+                                item2.setOnClickListener(v -> {
                                     launchPurchaseFlow(productDetails);
                                 });
                             }
@@ -227,9 +243,9 @@ public class PurchaseActivity extends AppCompatActivity {
                             List<ProductDetails.SubscriptionOfferDetails> subDetails2 = productDetails.getSubscriptionOfferDetails();
 
                             if (subDetails2 != null) {
-                                binding.tvItem3Title.setText(productDetails.getDescription());
-                                binding.tvItem3Price.setText(subDetails2.get(0).getPricingPhases().getPricingPhaseList().get(0).getFormattedPrice() + " /Year");
-                                binding.item3.setOnClickListener(v -> {
+                                tv_item3_title.setText(productDetails.getDescription());
+                                tv_item3_price.setText(subDetails2.get(0).getPricingPhases().getPricingPhaseList().get(0).getFormattedPrice() + " /Year");
+                                item3.setOnClickListener(v -> {
                                     launchPurchaseFlow(productDetails);
                                 });
                             }
@@ -276,14 +292,14 @@ public class PurchaseActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             if (product_id.equals(ONE_MONTH_SUBS)) {
-                                binding.ivCheck1.setVisibility(View.VISIBLE);
+                                iv_check1.setVisibility(View.VISIBLE);
                             } else if (product_id.equals(THREE_MONTHS_SUBS)) {
-                                binding.ivCheck2.setVisibility(View.VISIBLE);
+                                iv_check2.setVisibility(View.VISIBLE);
                             } else if (product_id.equals(ONE_YEAR_SUBS)) {
-                                binding.ivCheck3.setVisibility(View.VISIBLE);
+                                iv_check3.setVisibility(View.VISIBLE);
                             }
 
-                            binding.tvTitle.setText("You are PREMIUM now \n Upgrade more?");
+                            tv_title.setText("You are PREMIUM now \n Upgrade more?");
 //                            binding.topImg.setImageDrawable(getResources().getDrawable(R.drawable.bg_art_premium));
                         }
                     });

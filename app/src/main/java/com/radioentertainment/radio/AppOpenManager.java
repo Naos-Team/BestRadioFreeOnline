@@ -10,26 +10,26 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.appopen.AppOpenAd;
+import com.radioentertainment.utils.SharedPref;
 
 public class AppOpenManager {
     private static final String LOG_TAG = "AppOpenManager";
     private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/3419835294";
     private static AppOpenAd appOpenAd;
+    private SharedPref sharedPref;
 
     private AppOpenAd.AppOpenAdLoadCallback loadCallback;
 
     private final SplashActivity mySplash;
 
-    //Hàm dựng
     @RequiresApi(api = Build.VERSION_CODES.P)
     public AppOpenManager(SplashActivity mySplash) {
         this.mySplash = mySplash;
+        this.sharedPref = new SharedPref(mySplash);
         fetchAd();
     }
 
-    // nạp ads
     public void fetchAd() {
-        //nếu có sẵn ads có rồi
         if(isAdAvailable()){
             return;
         }
@@ -53,12 +53,10 @@ public class AppOpenManager {
         Log.e("ThongBao","Fetch Ad");
     };
 
-    // khởi tạo và trả về adRequest
     private AdRequest getAdRequest() {
         return new AdRequest.Builder().build();
     }
 
-    //Kiểm tra appOpenAd đã có sẵn hay chưa
     public boolean isAdAvailable() {
         if(appOpenAd != null){
             return true;
@@ -68,11 +66,9 @@ public class AppOpenManager {
     }
 
     public void showAdIfAvailable(){
-        // chỉ show ads khi ads đã được load
-        if(isAdAvailable()){
+        if(isAdAvailable() && !sharedPref.getIsPremium()){
             FullScreenContentCallback fullScreenContentCallback =
                     new FullScreenContentCallback(){
-                        // nếu app có sẵn -> hiện lên -> bỏ qua -> gọi hàm openMainActitivty của SplashActivity
                         @Override
                         public void onAdDismissedFullScreenContent() {
                             Log.e("ThongBao", "Ad Dismiss");
@@ -93,7 +89,6 @@ public class AppOpenManager {
                     };
             appOpenAd.show(mySplash, fullScreenContentCallback);
         }else{
-            // nếu app chưa có sẵn -> gọi hàm openMainActitivty của SplashActivity
             Log.e("ThongBao", "Ad is unavailable");
             fetchAd();
             mySplash.openMainActivity();

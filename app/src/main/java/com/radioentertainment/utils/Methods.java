@@ -52,6 +52,7 @@ import com.yakivmospan.scytale.Store;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.PrimitiveIterator;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -213,7 +214,7 @@ public class Methods {
     }
 
     public void showBannerAd(LinearLayout linearLayout) {
-        if (isConnectingToInternet()) {
+        if (isConnectingToInternet() && !sharedPref.getIsPremium()) {
             if (ConsentInformation.getInstance(context).getConsentStatus() == ConsentStatus.NON_PERSONALIZED) {
                 showNonPersonalizedAds(linearLayout);
             } else {
@@ -238,6 +239,11 @@ public class Methods {
     }
 
     public void showNativeAd(){
+
+        if(sharedPref.getIsPremium()){
+            return;
+        }
+
         NativeAdsView = ((BaseActivity) context).findViewById(R.id.my_template_native_ads);
 
         if(Constants.adNativeCount++ % 3 == 0){
@@ -274,7 +280,7 @@ public class Methods {
     }
 
     public void showInter(final int pos, final String type) {
-        if (Constants.isInterAd) {
+        if (Constants.isInterAd && !sharedPref.getIsPremium()) {
             Constants.adCount = Constants.adCount + 1;
             if (Constants.adCount % Constants.adShow == 0) {
                 isClicked = false;
@@ -706,7 +712,7 @@ public class Methods {
     public RequestBody getAPIRequest(String method, int page, String deviceID, String radioID, String searchText, String like, String catID, String type, String email, String password, String name, String phone, String userID, String reportMessage, File file) {
         JsonObject jsObj = (JsonObject) new Gson().toJsonTree(new API());
         jsObj.addProperty("method_name", method);
-        jsObj.addProperty("package_name", context.getPackageName());
+        jsObj.addProperty("package_name", "com.alexnguyen.radiofreeonline");
 
         switch (method) {
             case Constants.METHOD_ALL_RADIO:
